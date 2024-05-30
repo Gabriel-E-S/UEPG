@@ -9,7 +9,7 @@ public class Principal {
        
         conta1.nomeDoCliente = "Gabriel" ;
         conta2.nomeDoCliente = "José";
-        conta2.nomeDoCliente = "Paula";
+        conta3.nomeDoCliente = "Paula";
 
         conta1.numeroDaAgencia = 123;
         conta2.numeroDaAgencia = 1234;
