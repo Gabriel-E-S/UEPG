@@ -101,9 +101,6 @@ estamos carregando da memória o 4 elemento do vetor apontado por $s0.
 podemos usar instruções com operandos imediatos, para isso colocamos i no final das instruções
 
     addi $t0,$t1,5
-    
-
-
 
 
 
