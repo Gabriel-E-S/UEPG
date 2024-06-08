@@ -119,17 +119,46 @@ Percorremos a raiz, a sub-árvore esquerda e depois a sub-árvore direita.
 
 **DICA:** Percorra a árvore desde a raiz fazendo uma linha, se a linha passar pela esquerda do nó você adiciona ele na listagem.
 
+```C
+    void preOrdem(no *atual){
+        if(atual != NULL){
+            printf("%d ",atual->valor);
+            preOrdem(atual->esquerda);
+            preOrdem(atual->direita);
+        }
+    }
+```
+
 ### Em ordem
 
 Percorremos a sub-árvore esquerda, a raiz e depois a sub-árvore direita.
 
 **DICA:** Percorra a árvore desde a raiz fazendo uma linha, se a linha passar por baixo do nó você adiciona ele na listagem.
 
+```C
+    void emOrdem(no *atual){
+        if(atual != NULL){
+            emOrdem(atual->esquerda);
+            printf("%d ",atual->valor);
+            emOrdem(atual->direita);
+        }
+    }
+```
 ## Pós-ordem
 
 Percorremos a sub-árvore esquerda, depois a sub-árvore direita e por fim a raiz.
 
 **DICA:** Percorra a árvore desde a raiz fazendo uma linha, se a linha passar pela direita do nó você adiciona ele na listagem.
+
+```C
+    void posOrdem(no *atual){
+        if(atual != NULL){
+            posOrdem(atual->esquerda);
+            posOrdem(atual->direita);
+            printf("%d ",atual->valor);            
+        }
+    }
+```
 
 Exemplo prático de tudo que vimos:
 
@@ -207,18 +236,48 @@ Função que insere elementos implementada em C:
         }
     }
 ```
-### Percurso em ordem usando recursão
+### Busca usando recursão
 
 Aqui uma função que faz isso em linguagem C
 
-```C
-    void emOrdem(no *atual){
-        if(atual != NULL){
-            emOrdem(atual->esquerda);
-            printf("%d ",atual->valor);
-            emOrdem(atual->direita);
+``` C
+void BuscaArvore(no *atual, int valor, int *existe){
+
+    if(atual != NULL){
+        BuscaArvore(atual->esquerda,valor,existe);
+        if(atual->valor == valor){
+            *existe = 1 ;
+            return ;
         }
+        BuscaArvore(atual->direita,valor,existe);
     }
+}
+
+```
+
+Nesse casos fazemos a chamada dela assim
+
+``` C
+void menuBuscaArvore(){
+
+    if(vazia()){
+        return ;
+    }
+
+    int resultado = 0 , valor;
+
+    printf("\n\nDIGITE O VALOR PARA BUSCAR --> ");
+    scanf("%d",&valor);
+
+    BuscaArvore(raiz,valor,&resultado);
+
+    if(resultado){
+        printf("\n\nVALOR %d ENCONTRADO!!\n\n",valor);
+    }
+    else{
+        printf("\n\nVALOR %d NÃO ENCONTRADO!!\n\n",valor);
+    }
+}
 ```
 
 
