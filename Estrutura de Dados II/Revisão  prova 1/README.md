@@ -249,12 +249,265 @@ Estudamos 3 operações envolvendo heaps:
 + Remoção.
 + Consultar o elemento de maior prioriedade.
 
+Precisamos definir a estrutura que será usada para a implementação:
 
-Continua amanhã...
+```c
+struct heap_type{
+    int chaves[MAXHEAP];
+    int n;
+}
+```
+
+### Algoritmo de inserção
+
+O elemento deve ser inserido na primeira posição vazia do vetor, mas respeitando a ordem de prioriedade.
+
+Caso essa ordem seja quebrada temos que restaurá-la.
+
+Implementação em linguagem C:
 
 
+```c
+void insereHeap(heap_type *heap,int valor){
+
+    if(heap->n == HEAPMAX){
+        return ;
+    }
+    heap->n++;
+
+    heap->chaves[heap->n] = valor;
+    subir(heap,heap->n);
+}
+```
+
+```c
+
+void subir(heap_type *heap, int i){
+
+    int j;
+
+    j = i/2
+
+    if(j>= 1){
+        if(heap->chaves[i] > heap->chaves[j]){
+            aux = heap->chaves[i];
+            heap->chaves[i] = heap->chaves[j];
+            heap->chaves[j] = aux;
+            subir(heap,j);
+        }
+    }
+}
+```
+
+### Algoritmo de remoção
+
+Devemos remover sempre o elemento de maior prioriedade e manter as características da heap.
+
+Algoritmo implementado em lingaugem C:
 
 
+```C
+void removeHeap(heap_type *heap){
+
+    int aux;
+
+    if(heap->n == 0){
+        return;
+    }
+
+    aux = heap->chaves[heap->n];
+    heap->chaves[heap->n] = heap->chaves[1];
+    heap->chaves[1] = aux ;
+
+    heap->n --;
+
+    descer(heap,1);
+}
+```
+
+``` void descer(heap_type *heap,int i){
+
+    int j, aux;
+
+    j = i * 2;
+
+    if(j<= heap->n){
+
+        if(heap->chaves[j+1] > heap->chaves[j]){
+            j++
+        }
+        if(heap->chaves[i] < heap->chaves[j]){
+            aux = heap->chaves[i];
+            heap->chaves[i] = heap->chaves[j];
+            heap->chaves[j] = aux ;
+            descer(heap,j);
+        }
+
+    }
+
+}
+```
+
+### Algoritmo para ver o elemento de maior prioriedade
+
+Nesse código apenas mostramos o elemento mais priorietário, que sempre será  primeiro elemento:
+
+**OBS:** lembrar que a implementação foi feita começando no índice 1.
+
+
+``` c
+void mostraPriorietario(heap_type *heap){
+    printf("O elemento mais priorietário é %d",heap->chaves[1]);
+}
+```
+
+## Tabela Hash (espalhamento)
+
+É uma generalização de um vetor com m posições.
+
+Cada posição do vetor representa um endereço.
+
+A posição é calculada com base no valor do endereço.
+
+Em resumo tabelas hashing são dicionários para facilitar o
+encontro de informações dentro de uma estrutura de
+armazenamento.
+
+As operações de busca podem chegar a O(1).
+
+### Funções de hashing
+
+Evitam que hajam colisões na hora de inserir.
+
+Existem as formas que usam equações lineares, quadráticas, listas encadeadas, etc.
+
+Estrutura que vamos usar:
+
+```c
+typedef struct hash_type{
+    int valor;
+    bool ocupado;
+} hash_type ;
+```
+
+Funções auxiliares:
+
+```c
+int espalha(int chave,int tam,int incremento){
+
+    return chave % tam + incremento;
+}
+```
+```c
+bool indiceOcupado(int indice){
+    return hash[indice].ocupado;
+}
+```
+
+### Inserção usando espalhamento linear:
+
+```c
+void insere(int valor){
+    if(tamanhoAtual == MAXHASH){
+        return;
+    }
+
+    tamanhoAtual ++;
+
+    int indice = espalha(valor,MAXHASH,0);
+
+    int i = 0;
+
+    while(indiceOcupado(indice)){
+        indice = espalha(valor,MAXHASH,i);
+        i++;
+    }
+    hash[indice] = valor ;
+    hash[indice].ocupado = true;
+}
+```
+
+### Procedimento de busca
+
+```c
+int busca(int valor){
+    int c = 0 ;
+
+    int indice;
+
+    while(c < MAXHASH){
+        indice = espalha(valor,MAXHASH);
+        if(hash[indice] == valor){
+            return indice;
+        }
+        c++ ;
+    }
+    return -1;
+}
+```
+### Tratamento de colisões usando listas
+
+Para fazermos isso precisamos definir outra estrutura:
+
+```c
+struct no{
+    int valor;
+    struct no *proximo;
+}
+```
+```c
+typedef struct hash_type{
+    bool ocupado;
+    no *endereco;
+} hash_type ;
+```
+
+### Função de inserção com listas
+
+```c
+void insere(int valor){
+
+    if(tamanhoAtual == N){
+        printf("HASH CHEIA!");
+        return;
+    }
+    tamanhoAtual++ ;
+
+    int indice = espalha(valor,N,0);
+
+    if(hash[indice].endereco == NULL){
+        hash[indice].endereco = insereLista(valor,NULL);
+    }
+    else{
+        vetor[indice].endereco = insereLista(valor,vetor[indice].endereco);
+    }
+
+    vetor[indice].ocupado = true;
+}
+```
+
+Função para inserir na lista:
+
+```c
+struct no* insereLista(int valor,no *inicio){
+
+    struct no *aux ;
+    aux = (no*)malloc(sizeof(no));
+
+    aux->valor = valor ;
+    aux->proximo = NULL ;
+
+
+    if(inicio == NULL){
+        inicio = aux ;
+    }
+    else{
+        aux->proximo = inicio;
+        inicio = aux;
+    }
+    return inicio ;
+}
+```
 
 
 
