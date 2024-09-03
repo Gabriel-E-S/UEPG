@@ -509,7 +509,16 @@ struct no* insereLista(int valor,no *inicio){
 }
 ```
 
+## Skip List
 
 
+Nesta estrutura de dados, são feitas escolhas aleatórias ao
+arranjar os itens de tal forma que os tempos de pesquisa e de
+atualização são O(log n) em média, onde n é o número de itens
+no dicionário.
 
+Funciona como um agrupamento vertical de listas
 
+Eu ainda não  terminei a implementação da skip list, mas deixo um link para uma playlist que explica tudo de forma detalhada
+
+[text](https://www.youtube.com/watch?v=rHWO_dFMSOM&list=PL8iN9FQ7_jt4XEFK3mZtW0EsMN6vwFE_Y&pp=iAQB)
