@@ -4,7 +4,7 @@
 
 A linguagem VHDL é uma linguagem `descritiva` , ou seja, não é uma linguagem de programação.
 
-Nela podemos descrever hardware e sua criação fica bem mais facilitada devido a simplificação de PROCESSos como levantamento de expressões lógicas e simplificações.
+Nela podemos descrever hardware e sua criação fica bem mais facilitada devido a simplificação de PROCESSOS como levantamento de expressões lógicas e simplificações.
 
 Vamos direto aos assuntos mais importantes.
 
@@ -30,7 +30,7 @@ Exemplo:
 use ieee.std_logic_1164.all ;
 ```
 
-Essa biblioteca adiciona a maioria do que é preciso para programas mais simples.
+Essa biblioteca adiciona a maioria do que é preciso para estruturas simples.
 
 ### Entidades
 
@@ -59,11 +59,11 @@ Estrutura da Architecture:
 
 + Componentes: Se você estiver instanciando outras entidades dentro da arquitetura, pode declarar esses componentes e suas interconexões.
 
-+ PROCESSos: Se necessário, você pode incluir PROCESSos para descrever comportamentos sequenciais ou combinacionais, utilizando sinais e variáveis.
++ PROCESSOS: Se necessário, você pode incluir PROCESSOS para descrever comportamentos sequenciais ou combinacionais, utilizando sinais e variáveis.
 
 + Atribuições: Você pode usar atribuições para definir como as saídas depENDem das entradas.
 
-**ATENÇÃO:** Diferente de liguagens de programação, não há ordem de prioridade de execução nas instruções declaradas nesse módulo.
+**ATENÇÃO:** Diferente de liguagens de programação, não há ordem de prioridade de execução nas instruções declaradas nesse módulo, todas as instruções que você mandar a estrutura executar simultaneamente.
 Para resolver essa questão utilizamos o comando `PROCESS` .
 
 ``` VHDL
@@ -145,5 +145,3 @@ Os sinais de controle devem decidir de onde vão pegar os operandos, em instruç
     + 10 - Verificar o campo de função da instrução
 
     + 11 - não há utilização.
-
-Amanhã implementação multiciclo e continuação...
