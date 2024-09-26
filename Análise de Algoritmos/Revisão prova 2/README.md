@@ -4,7 +4,7 @@
 
 Equações de recorrência são relações que definem uma sequência de valores com base em termos anteriores, frequentemente usadas para analisar o tempo de execução de algoritmos recursivos. Por exemplo, a equação T(n) = T(n-1) + O(1) descreve um algoritmo que executa uma operação constante após chamar-se recursivamente.
 
-Para resolver essas equações, métodos comuns incluem a substituição, a árvore de recursão e o método mestre. O método mestre, por exemplo, permite uma análise mais direta, especialmente para recursões da forma T(n) = aT(n/b) + f(n). Isso ajuda a encontrar o tempo de execução "ultimate" do algoritmo. Se precisar de um exemplo específico, posso ajudar!
+Para resolver essas equações, métodos comuns incluem a substituição, a árvore de recursão e o método mestre. O método mestre, por exemplo, permite uma análise mais direta, especialmente para recursões da forma T(n) = aT(n/b) + f(n).
 
 ## Método iterativo
 
