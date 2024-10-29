@@ -26,8 +26,8 @@ Se quiser clique no nome para ver um contéudo em específico.
 + [Ordenação por Inserção](#ordenação-por-inserção).
 + [Ordenação por Seleção](#ordenação-por-seleção).
 + [MergeSort ou Ordenação por Combinação ou Intercalação](#ordenação-por-combinação-merge-sort).
-+ Heapsort
-+ QuickSort
++ [Heapsort](#heap-sort)
++ [QuickSort](#quicksort)
 + Ordenação por Contagem
 + Ordenação por Dígitos
 + Ordenação por Caixas (Bucket Sort)
@@ -251,6 +251,164 @@ Que tem solução $\Theta(n\cdot log(n))$
 $\Theta(n)$.
 
 + É estável? `SIM`.
+
+### Heap Sort
+
+Nesse resumo não irei detalhar o que é uma heap, no entanto o heap sort consiste em criar essa estruturar de dados em um vetor e ordená-lo com base nisso.
+
+Algumas operações possíveis:
+
++ Max-Heapify(A, i) As sub-árvores do nodo i são max-heaps, mas
+A[i] pode ser menor do que seus dois filhos. O
+procedimento transforma A[] em um max-heap. Tempo: $O(log(n))$
+
++ Constrói-Heap(A) Transforma o vetor A em um heap. Tempo: $O(n)$
+.
+
++ HeapSort(A) Ordena o vetor A usando as operações
+Constrói-Heap() e Max-Heap().
+
+```C
+// Função para ajustar o heap
+void heapify(int arr[], int n, int i) {
+    int largest = i; // Inicializa o maior como raiz
+    int left = 2 * i + 1; // Filho esquerdo
+    int right = 2 * i + 2; // Filho direito
+
+    // Verifica se o filho esquerdo é maior que a raiz
+    if (left < n && arr[left] > arr[largest]) {
+        largest = left;
+    }
+
+    // Verifica se o filho direito é maior que o maior até agora
+    if (right < n && arr[right] > arr[largest]) {
+        largest = right;
+    }
+
+    // Se o maior não for a raiz, troca e continua a heapify
+    if (largest != i) {
+        swap(&arr[i], &arr[largest]);
+        heapify(arr, n, largest);
+    }
+}
+```
+Agora a função que chama a anterior:
+
+```C
+// Função principal para implementar o heap sort
+void heapSort(int arr[], int n) {
+    int i;
+    // Constrói um heap máximo
+    for ( i = n / 2 - 1; i >= 0; i--) {
+        heapify(arr, n, i);
+    }
+    // Um a um, extrai elementos do heap
+    for ( i = n - 1; i >= 0; i--) {
+        swap(&arr[0], &arr[i]); // Mover a raiz atual para o final
+        heapify(arr, i, 0); // Chama heapify na árvore reduzida
+    }
+}
+```
+#### Características do algoritmo:
+
++ Complexidade de pior caso: $\Theta(n\cdot log(n))$.
+
++ Complexidade de melhor caso: $\Theta(n\cdot log(n))$.
+
++ É estável? `NÃO`.
+
+### QuickSort
+
+Um algoritmo eficiente para ordenação que por mais que possua tempo de pior caso de $\Theta(n^2)$, tem sua eficiência comprovada analiticamente e experimentalmente considerando que seu caso médio é de $\Theta(n\cdot log(n))$.
+
++ **Divisão**: Divide o vetor em dois vetores de tamanho n/2, colocando os elementos menores do que o pivô na primeira parte.
+
++ **Conquista**: Recursivamente as duas metades são ordenadas.
+
++ **Combinação**: `No quick sort não é preciso fazer nada para combinar as soluções!`
+
+#### Passo a passo do algoritmo:
+
+1. Escolhemos um pivô para comparação.
+
++ **IMPORTANTE**: para que dois elementos sejam comparados um deles `OBRIGATORIAMENTE` deve ser o pivô, e cada elemento só é comparado `1 vez`.
+
+2. É chamada a função [partição](#função-partição) que coloca os menores queo pivô para um lado e os maiores do outro dividindo o vetor em duas partes.
+
+3. As partes criadas são ordenadas recursivamente.
+
+##### Função partição:
+
+```C
+int particao(int A[], int p, int r) {
+    int j;
+    int x = A[r]; // Escolhendo o último elemento como pivô
+    int i = p - 1; // Índice do menor elemento
+
+    // Itera sobre os elementos da parte da lista que está sendo ordenada
+    for (j = p; j <= r - 1; j++) {
+        if (A[j] <= x) { // Se o elemento atual é menor ou igual ao pivô
+            i++; // Aumenta o índice do menor elemento
+            troca(&A[i], &A[j]); // Troca os elementos
+        }
+    }
+    swap(&A[i + 1], &A[r]); // Coloca o pivô na posição correta
+    return i + 1; // Retorna o índice do pivô
+}
+```
+
+E a função que organiza as chamadas recursivas
+
+```C
+// Função principal do QuickSort
+void quicksort(int A[], int p, int r) {
+    if (p < r) { // Verifica se a lista tem mais de um elemento
+        int q = particao(A, p, r); // Particiona e obtém o índice do pivô
+        quicksort(A, p, q - 1); // Ordena a parte da esquerda
+        quicksort(A, q + 1, r); // Ordena a parte da direita
+    }
+}
+```
+
+Nessa implementação o pivô foi escolhido como o elemento mais a direita do vetor,
+podem ser usadas eurísticas para minizar a chance do pior caso como mediana de 3 elementos, pivô aleatório...
+
+#### Características do algoritmo:
+
++ Complexidade de pior caso: $\Theta(n\cdot log(n))$.
+
+Acontece quando a distribuição das duas metades fica muito desigual deixando dois problemas de tamanho **n-1** e **0**.
+
+
++ Complexidade de melhor caso: $\Theta(n\cdot log(n))$.
+
+Acontece quando o vetor é quase sempre dividido ao meio.
+
++ Complexidade de espaço:
+$\Theta(1)$.
+
++ É estável? `NÃO`.
+
++ A probabilidade de dois elementos distintos serem comparados em um intervalo $I_{ij}$ é dada por $\frac{2}{j-i+1}$ .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
