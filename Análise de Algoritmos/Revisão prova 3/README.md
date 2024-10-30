@@ -653,22 +653,76 @@ void BucketSort(float V[], int n) {
 
 ## Limite inferior para ordenação com comparação entre chaves
 
+Qual é a complexidade de tempo de pior caso mínima de
+qualquer algoritmo de ordenação?
+
+$Ω(n)$ é um limitante inferior para algoritmos de ordenação.
+
+Por quê?
+
+Porque precisamos no mínimo processar todos os elementos do vetor para garantir que ele está ordenado.
+
+Agora estudaremos um limite inferior maior do que $Ω(n)$
+para o pior caso de algoritmos de ordenação por comparação.
+entre chaves.
+
+### Árvores de decisão
+
+Uma árvore de decisão modela todas as possíveis execuções
+de um algoritmo específico de ordenação para um n fixo.
+
+Então existe, por exemplo, uma árvore de decisão para a
+ordenação por inserção para n = 3.
+
+Vamos assumir que os elementos a serem ordenados são
+distintos.
+
+Exemplo do conceito:
+
+![Árvore de decisão](./Imagens/Árvore%20de%20decisão%201.png)
+
+Agora o conceito aplicado em ordenação de vetores.
+
+Esta árvore modela o Algoritmo de Ordenação por Inserção para
+n = 3:
+
+![Árvore de decisão](./Imagens/Árvore%20de%20decisão%202.png)
 
 
++ Cada nó interno da árvore representa uma comparação.
++ As folhas da árvore representam permutações do vetor de
+entrada.
++ Um caminho da raiz até uma folha representa o
+comportamento de uma execução do algoritmo.
++ Quando o resultado de uma comparação é $<$ , a execução do
+algoritmo segue o filho esquerdo do nó.
++ Caso contrário segue o filho direito.
 
+### Prova
 
+Se cada caminho da raiz até uma folha representa a execução
+do algoritmo para uma das possíveis entradas, o que
+representa o tempo de pior caso do algoritmo?
 
+Vamos mostrar que qualquer árvore de decisão que representa a
+execução de um algoritmo de ordenação por comparação entre
+chaves tem altura de no mínimo $Ω(n\cdot log (n))$.
 
+Os elementos de entrada estão na seguinte ordem:
+a1, a2, . . . , an.
 
+Vamos assumir que os elementos são distintos.
 
+• Se o algoritmo ordena corretamente qualquer vetor, então
+todas as permutações possíveis devem estar presentes nas
+folhas das árvores. O número total de folhas deve ser de no mínimo $n!$.
 
+Uma árvore binária de altura h tem no máximo $2^h$
+folhas.
 
+Portanto $2^h >= $ número de folhas $>= n!$
 
-
-
-
-
-
+Continua de noite :)
 
 
 
