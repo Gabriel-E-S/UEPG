@@ -19,9 +19,11 @@ Considere o vetor
 
 Quando o algoritmo é estável, obrigatóriamente o número `2` do índice 1 vem antes do que o `2` do índice 3.
 
-### Principais algoritmos de ordenação
+### Principais algoritmos de ordenação e tópicos da revisão
 
 Se quiser clique no nome para ver um contéudo em específico.
+
+Tópicos de ordenação:
 
 + [Ordenação por Inserção](#ordenação-por-inserção).
 + [Ordenação por Seleção](#ordenação-por-seleção).
@@ -30,7 +32,11 @@ Se quiser clique no nome para ver um contéudo em específico.
 + [QuickSort](#quicksort).
 + [Ordenação por Contagem](#ordenação-por-contagem-counting-sort).
 + [Ordenação por Dígitos](#ordenação-por-dígitos-radix-sort).
-+ Ordenação por Caixas (Bucket Sort).
++ [Ordenação por Caixas (Bucket Sort)](#bucket-sort).
+---
+Outros tópicos:
++ [Programação dinâmica](#programação-dinâmica).
+--- 
 
 Um resumo das suas complexidades de tempo pode ser dada pela tabela a seguir:
 
@@ -720,9 +726,94 @@ folhas das árvores. O número total de folhas deve ser de no mínimo $n!$.
 Uma árvore binária de altura h tem no máximo $2^h$
 folhas.
 
-Portanto $2^h >= $ número de folhas $>= n!$
+Portanto $2^h >=$ número de folhas $>= n!$
 
-Continua de noite :)
+Então $h >= log_2(n!)$
+
+Resolvendo essa expressão expandindo o faotrial chegamos no resultado que $k>\Omega(n\cdot log(n))$.
+
+
+A solução segue abaixo:
+
+![solução da equação](./Imagens/Prova%20do%20limite%20inferior.png)
+
+### Programação Dinâmica
+
+É uma técnica de projeto de algoritmo que pode ser aplicada quando temos um problema maior que pode ser resolvido a partir de soluções menores desse mesmo problema.
+
+Essa situação pode gerar recursões ineficientes, que calculam muitas vezes uma mesma instância do problema.
+
+A técnica de programação dinâmica consiste em
+resolver os menores problemas primeiro e armazenar
+os resultados em uma tabela (vetor ou matriz) a ser
+consultada quando necessário.
+
+#### Solução ótima
+
+Existem algoritmos que podem vir a encontrar soluções para problemas mas não necessariamente a melhor solução.
+
+A solução dita como `ótima` é a melhor solução devido a uma entrada em específico seguindo as regras do problema.
+
+O valor da solução ótima pode ser descrito por relações de
+recorrência.
+
+##### Exemplo: Fibonnaci
+
+A sequência de Fibonnaci é composta pela soma dos números `n-1` com os `n-2` partindo de um `n` atual.
+
+A equação de recorrência é dada por:
+
+
+$$
+\begin{align*}
+
+\end{align*}
+
+
+$$
+
+$$
+\left\{
+\begin{align*}
+f(n) = f(n-1) + f(n-2)\\
+f(0) = 1\\
+f(1) = 1\\
+\end{align*}
+\right.
+$$
+
+Exemplo da árvore de recursão para $n=7$, note que o crescimento é exponencial.
+
+Uma solução é guardarmos o que já calculamos usando a programação dinâmica.
+
+![árvore otimizada](./Imagens/Árvore%20de%20recursão%202.png)
+
+#### Problema da mochila
+
+##### Definição:
+
+Temos um conjunto de objetos S, numerados 1,2, ..., n.
+
+O valor do objeto i é vi , para i = 1,...,n.
+
+O peso de cada objeto é pi
+ , para i = 1,..., n.
+
+Queremos encher uma mochila, cuja capacidade de peso é B,
+de forma a maximizar o valor dos objetos carregados.
+
+Vamos denotar por opt(X, k) o valor de uma solução para o
+problema da mochila, considerando os objetos no conjunto X e uma
+mochila de capacidade k.
+
+##### Versão binária
+
+Nessa versão ou levamos o item ou deixamos ele de lado, o que buscamos e máximizar o valor dos itens dada uma capacidade.
+
+
+
+
+
 
 
 
