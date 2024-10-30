@@ -28,7 +28,7 @@ Se quiser clique no nome para ver um contéudo em específico.
 + [MergeSort ou Ordenação por Combinação ou Intercalação](#ordenação-por-combinação-merge-sort).
 + [Heapsort](#heap-sort)
 + [QuickSort](#quicksort)
-+ Ordenação por Contagem
++ [Ordenação por Contagem](#ordenação-por-contagem-couting-sort).
 + Ordenação por Dígitos
 + Ordenação por Caixas (Bucket Sort)
 
@@ -390,6 +390,61 @@ $\Theta(1)$.
 + É estável? `NÃO`.
 
 + A probabilidade de dois elementos distintos serem comparados em um intervalo $I_{ij}$ é dada por $\frac{2}{j-i+1}$ .
+
+## Ordenação em tempo linear
+
+Métodos de ordenação por comparação de chaves tem cota inferior na complexidade de tempo de pior caso de $\Theta(n\cdot log(n))$.
+
+Como ordenar em tempo linear então?
+
+1. Não usar comparação entre chaves
+    - por exemplo, comparar os dígitos dos números.
+    - usar as chaves como índices.
+2. Ter informações sobre a distribuição dos números
+    - por exemplo, ordenar números com distribuição uniforme.
+    - chaves dentro de um intervalo pequeno.
+3. Casos particulares
+    - Ordenar um vetor de zeros e uns.
+    - Ordenar um vetor de n números entre 1 e n.
+
+Aqui o nosso primeiro exemplo:
+
+```C
+// Função que ordena um vetor de inteiros com n elementos
+// contendo todos os números entre 0 e n-1.
+// O é o vetor ordenado no final passado como parâmetro.
+void Ordena(int *V, int n, int *O) {
+    int i;
+    // Inicializa o vetor O com zeros
+    for ( i = 0; i < n; i++) {
+        O[i] = 0; // Define todos os elementos como 0
+    }
+
+    // Preenche o vetor O com os elementos do vetor V
+    for ( i = 0; i < n; i++) {
+        O[V[i]] = V[i]; // Coloca cada elemento na posição correspondente
+    }
+}
+```
+
+Esse código percorre o vetor com n elementos somente uma vez, logo seu tempo de execução é $\Theta(n)$.
+
+### Ordenação por Contagem (Couting sort)
+
+* Conta o número de ocorrências de cada número
+
+* Calcula quantos números são menores ou iguais a cada
+número
+* Atribui os números (registros) às suas posições no vetor de
+saída
+* percorre o vetor de entrada em ordem reversa
+* a cada ocorrência de um número, decrementa o número de
+números menores ou iguais a ele
+
+
+
+
+## Limite inferior para ordenação com comparação entre chaves
 
 
 
