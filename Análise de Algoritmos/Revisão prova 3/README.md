@@ -26,11 +26,11 @@ Se quiser clique no nome para ver um contéudo em específico.
 + [Ordenação por Inserção](#ordenação-por-inserção).
 + [Ordenação por Seleção](#ordenação-por-seleção).
 + [MergeSort ou Ordenação por Combinação ou Intercalação](#ordenação-por-combinação-merge-sort).
-+ [Heapsort](#heap-sort)
-+ [QuickSort](#quicksort)
-+ [Ordenação por Contagem](#ordenação-por-contagem-couting-sort).
-+ Ordenação por Dígitos
-+ Ordenação por Caixas (Bucket Sort)
++ [Heapsort](#heap-sort).
++ [QuickSort](#quicksort).
++ [Ordenação por Contagem](#ordenação-por-contagem-counting-sort).
++ [Ordenação por Dígitos](#ordenação-por-dígitos-radix-sort).
++ Ordenação por Caixas (Bucket Sort).
 
 Um resumo das suas complexidades de tempo pode ser dada pela tabela a seguir:
 
@@ -77,7 +77,8 @@ void inserctionSort(int A[],int n){
 
 ```C
 void insertionSort(int A[], int n) {
-    for (int i = 1; i < n; i++) {
+    int i;
+    for (i = 1; i < n; i++) {
         int x = A[i]; // O elemento a ser inserido
         int j = i - 1;
 
@@ -118,13 +119,14 @@ void swap(int* a, int* b) {
 #### Versão recursiva
 ```C
 void selectionSort(int A[], int n) {
+    int i;
     if (n <= 1) {
         return;
     }
 
     // Encontra o índice do menor elemento no array A[0..n-1]
     int minIndex = 0;
-    for (int i = 1; i < n; i++) {
+    for (i = 1; i < n; i++) {
         if (A[i] < A[minIndex]) {
             minIndex = i;
         }
@@ -270,7 +272,7 @@ Constrói-Heap() e Max-Heap().
 
 ```C
 // Função para ajustar o heap
-void heapify(int arr[], int n, int i) {
+void heapify(int arr[], int n,int i) {
     int largest = i; // Inicializa o maior como raiz
     int left = 2 * i + 1; // Filho esquerdo
     int right = 2 * i + 2; // Filho direito
@@ -407,6 +409,10 @@ Como ordenar em tempo linear então?
     - Ordenar um vetor de zeros e uns.
     - Ordenar um vetor de n números entre 1 e n.
 
+Vamos perceber que esses algoritmos não contradizem a cota inferior que será estudada no próximo tópico.
+
+Além disso é possível ordenar em tempo linear dadas certas condicões.
+
 Aqui o nosso primeiro exemplo:
 
 ```C
@@ -429,7 +435,7 @@ void Ordena(int *V, int n, int *O) {
 
 Esse código percorre o vetor com n elementos somente uma vez, logo seu tempo de execução é $\Theta(n)$.
 
-### Ordenação por Contagem (Couting sort)
+### Ordenação por Contagem (Counting sort)
 
 * Conta o número de ocorrências de cada número
 
@@ -441,10 +447,214 @@ saída
 * a cada ocorrência de um número, decrementa o número de
 números menores ou iguais a ele
 
+#### Exemplo:
+
++ Vetor de Entrada: V = [7, 5, 5, 1, 1, 0, 2, 1]
++ Ocorrências de cada número: C = [1, 3, 1, 0, 0, 2, 0, 1]
++ Quantos números são menores ou iguais a:
+C = [1, 4, 5, 5, 5, 7, 7, 8]
++ Vetor em Ordem: V = [0, 1, 1, 1, 2, 5, 5, 7].
+
+#### Uma implementação em linguagem C
+
+```C
+void countingSort(int V[], int n, int max) {
+    i;
+    int C[max]; // Contar ocorrências
+    int O[n];   // Vetor ordenado
+
+    // Inicializa o vetor de contagem
+    for (i = 0; i < max; i++) {
+        C[i] = 0;
+    }
+
+    // Contar ocorrências
+    for (i = 0; i < n; i++) {
+        C[V[i]]++;
+    }
+
+    // Acumular as contagens
+    for (i = 0; i < max - 1; i++) {
+        C[i + 1] += C[i];
+    }
+
+    // Construir o vetor ordenado
+    for (i = n - 1; i >= 0; i--) {
+        O[C[V[i]] - 1] = V[i];
+        C[V[i]]--;
+    }
+
+    // Copiar o vetor ordenado de volta para o vetor original
+    for (i = 0; i < n; i++) {
+        V[i] = O[i];
+    }
+}
+```
+#### Análise assintótica
+
+Vamos considerar que o vetor tem `n` números e que o intervalo das chaves é de `0 até k-1`.
+
+Percorremos o vetor V com `n` posições 2 vezes: $\Theta(n)$.
+Percorremos o vetor C com `k`posições 1 vez: $\Theta(k)$.
+
+Logo o tempo de execução é de $\Theta(n+k)$.
+
+Quando $k ∈ O(n)$, então o algoritmo é $Θ(n)$.
+
+#### Características do algoritmo:
+
++ Complexidade de pior caso: $\Theta(n+k)$.
+
++ Complexidade de melhor caso: $\Theta(n)$.
+
++ É estável? `SIM`.
+
+### Ordenação por dígitos (Radix sort)
+
++ Ordena strings de mesmo comprimento.
++ Ordena eficientemente números com muitos dígitos.
+
+#### Ordem Lexicográfica - Definição
+
+Dizemos que uma string s é lexicograficamente menor que uma
+string t se o primeiro byte de s que difere do correspondente byte
+de t é menor que o byte de t. Caso esse byte não existe, a menor
+string é a com menos caracteres.
+
+O ordenação por dígitos funciona devido essa propriedade, outro requisito é que devemos ordenar  do dígito `menos` significativo para o `mais` significativo, além disso a ordenação deve ser `estável`.
+
+#### implementação em C
+
+```C
+void RadixSort(int V[], int n) {
+    // Encontrar o valor máximo para determinar o número de dígitos
+    i,exp;
+    int max = V[0];
+    for (i = 1; i < n; i++) {
+        if (V[i] > max) {
+            max = V[i];
+        }
+    }
+
+    // Aplicar CountingSort para cada dígito
+    for (exp = 1; max / exp > 0; exp *= 10) {
+        CountingSort(V, n, exp);
+    }
+}
+```
+
+A função do CountingSort foi levemente modificada como se pode ver a seguir:
+
+```C
+void CountingSort(int V[], int n, int exp) {
+    i;
+    int output[n]; // Vetor de saída
+    int count[10] = {0}; // Contador para dígitos (0-9)
+
+    // Contar ocorrências dos dígitos
+    for (i = 0; i < n; i++) {
+        count[(V[i] / exp) % 10]++;
+    }
+
+    // Acumular contagens
+    for (i = 1; i < 10; i++) {
+        count[i] += count[i - 1];
+    }
+
+    // Construir o vetor de saída
+    for (i = n - 1; i >= 0; i--) {
+        output[count[(V[i] / exp) % 10] - 1] = V[i];
+        count[(V[i] / exp) % 10]--;
+    }
+
+    // Copiar o vetor de saída para o vetor original
+    for (i = 0; i < n; i++) {
+        V[i] = output[i];
+    }
+}
+```
+#### Características do algoritmo:
+
++ Complexidade de pior caso: $\Theta(n\cdot k)$.
+Onde $k$ é o comprimento médio da chave.
+
++ Complexidade de melhor caso: $\Theta(n+s)$. Onde $s$ é o tamanho do alfabeto.
+
++ É estável? `SIM`.
+
+Em resumo, quando precisamos ordenar dados com quantidades fixas de caracteres de forma estável esse algoritmo pode ser uma escolha muito interessante.
+
+### Bucket Sort
+
+Princípio de funcionamento:
+
++ Ordena n chaves distribuídas uniformemente no intervalo [0,1].
++ Distribui as chaves em n listas (buckets).
++ Ordena as listas.
++ Concatena as listas.
+
+#### Implementação em C
 
 
+```C
+// Função de ordenação por baldes
+void BucketSort(float V[], int n) {
+    int i;
+
+    // Verifica se o número de elementos não excede o número máximo de baldes, que é definido por MAX_BUCKETS.
+    if (n > MAX_BUCKETS) {
+        printf("Número de elementos excede o número máximo de baldes permitidos.\n");
+        return;
+    }
+
+    float buckets_list[MAX_BUCKETS][MAX_BUCKETS]; // Array de baldes
+    int bucket_sizes[MAX_BUCKETS] = {0}; // Array para rastrear o tamanho de cada balde
+
+    // Inicializa todos os baldes
+    for (i = 0; i < MAX_BUCKETS; i++) {
+        bucket_sizes[i] = 0; // Tamanho inicial de cada balde é zero
+    }
+
+    // Distribui os elementos nos baldes
+    for (i = 0; i < n; i++) {
+        int j = (int)(n * V[i]); // Determina o balde para o elemento V[i]
+        if (j >= MAX_BUCKETS) {
+            j = MAX_BUCKETS - 1; // Coloca o elemento no último balde se exceder
+        }
+        buckets_list[j][bucket_sizes[j]] = V[i]; // Adiciona o elemento ao balde
+        bucket_sizes[j]++; // Incrementa o tamanho do balde
+    }
+
+    // Ordena os elementos dentro de cada balde
+    for (i = 0; i < MAX_BUCKETS; i++) {
+        if (bucket_sizes[i] > 0) { // Verifica se o balde contém elementos
+            InsertionSort(buckets_list[i], bucket_sizes[i]); // Ordena o balde
+        }
+    }
+
+    // Concatena os baldes em um único vetor
+    int index = 0; // Índice para o vetor de saída
+    for (i = 0; i < MAX_BUCKETS; i++) {
+        for (int j = 0; j < bucket_sizes[i]; j++) {
+            V[index++] = buckets_list[i][j]; // Copia os elementos de cada balde para V
+        }
+    }
+}
+```
+
+#### Características do algoritmo:
+
++ Complexidade de pior caso: $\Theta(n^2)$.
+
+
++ Complexidade de melhor caso: $\Theta(n+k)$.
+
++ É estável? `SIM`.
 
 ## Limite inferior para ordenação com comparação entre chaves
+
+
+
 
 
 
