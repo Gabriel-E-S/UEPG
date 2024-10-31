@@ -36,6 +36,8 @@ Tópicos de ordenação:
 ---
 Outros tópicos:
 + [Programação dinâmica](#programação-dinâmica).
++ [Problema da mochila](#problema-da-mochila).
++ [Métodos gulosos](#métodos-gulosos).
 --- 
 
 Um resumo das suas complexidades de tempo pode ser dada pela tabela a seguir:
@@ -809,6 +811,81 @@ mochila de capacidade k.
 ##### Versão binária
 
 Nessa versão ou levamos o item ou deixamos ele de lado, o que buscamos e máximizar o valor dos itens dada uma capacidade.
+
+A equação de recorrência do problema é dada por:
+
+![eq problema da mochila](./Imagens/Equação%20problema%20da%20mochila.png).
+
+Mas o que ela nos diz?
+
+Quando a capacidade é 0 ou o número de itens é 0 por consequência a solução desses subproblemas também é 0.
+
+Se tentarmos colocar um item que não cabe na mochila, essa instância será marcada como $-\infty $ para que na hora de fazer o máximo entre as duas possibilidades o resultado seja o certo.
+
+A 3° Equação nos diz se colocamos ou não o item na mochila.
+Em caso positivo comparamos a linha anterior com a mesma capacidade. no outro caso somamos o valor do item atual com a instância da linha anterior com a capacidade atual menos o peso do item, por fim fazendo o máximo entre essas duas possibilidades e colocando na matriz.
+
+Exemplo com quatro itens:
+
+$i = 4$
+
+Vetor com os valores :
+
+$v = [6,3,4,7]$
+
+Vetor com os pesos :
+
+$p = [2,3,4,7]$
+
+Capacidade da mochila:
+
+$C = 10$
+
+|i\C   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 
+|---|---|---|---|---|---|---|---|---|---|---|----|
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0  |
+| 1 | 0 | 0 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6  |
+| 2 | 0 | 0 | 6 | 6 | 6 | 9 | 9 | 9 | 9 | 9 | 9  |
+| 3 | 0 | 0 | 6 | 6 | 6 | 9 | 11| 11| 11| 14| 14 |
+| 4 | 0 | 0 | 6 | 6 | 6 | 9 | 11| 11| 11| 14| 14 |
+
+O valor da solução ótima fica localizada na parte mais à direita e para baixo da matriz, nesse exemplo é $14$.
+
+###### Características do algoritmo:
+
++ Complexidade de pior caso: $\Theta(i\cdot C)$.
+
+Por mais que o algoritmo a princípio pareça polinomial, podemos perceber que ao aumentar o número de dígitos de $C$ a matriz para o cálculo cresce exponencialmente.
+
+Com isso podemos chamar essa solução de `pseudopolinomial`.
+
+##### Versão Fracionária
+
+Ao contrário da versão booleana em que poderíamos deixar espaços vazios na mochila por falta de espaço nessa versão sempre podemos enchê-la com o máximo possível de itens, podendo colocar frações deles.
+
+Ao colocarmos tudo o que for possível de forma inteira, podemos colocar uma fração de item **j** com a expressão:
+
+$$
+    V_j \cdot \frac{C}{p_j}
+$$
+
+### Métodos gulosos
+
+Um algoritmo guloso faz escolhas com alguma informação
+disponível em um iteração e não se ‘arrepende’ das escolhas
+feitas.
+
+Em outras palavras são formas de resolver problemas que possivelmente vão entregar soluções boas para a entrada, mas que nem sempre serão as melhores soluções possíveis.
+
+
+
+
+
+
+
+
+
+
 
 
 
