@@ -824,7 +824,7 @@ $i = 4$
 
 Vetor com os valores :
 
-$v = [6,3,4,7]$
+$v = [6,3,5,7]$
 
 Vetor com os pesos :
 
