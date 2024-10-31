@@ -38,6 +38,7 @@ Outros tópicos:
 + [Programação dinâmica](#programação-dinâmica).
 + [Problema da mochila](#problema-da-mochila).
 + [Métodos gulosos](#métodos-gulosos).
++ [Métodos de ramificação e corte](#métodos-de-ramificação-e-corte).
 --- 
 
 Um resumo das suas complexidades de tempo pode ser dada pela tabela a seguir:
@@ -765,15 +766,6 @@ A sequência de Fibonnaci é composta pela soma dos números `n-1` com os `n-2` 
 
 A equação de recorrência é dada por:
 
-
-$$
-\begin{align*}
-
-\end{align*}
-
-
-$$
-
 $$
 \left\{
 \begin{align*}
@@ -782,6 +774,7 @@ f(0) = 1\\
 f(1) = 1\\
 \end{align*}
 \right.
+
 $$
 
 Exemplo da árvore de recursão para $n=7$, note que o crescimento é exponencial.
@@ -878,26 +871,141 @@ feitas.
 Em outras palavras são formas de resolver problemas que possivelmente vão entregar soluções boas para a entrada, mas que nem sempre serão as melhores soluções possíveis.
 
 
+#### Solução ótima versão fracionária com método guloso
+
+Em certos casos é possível sempre achar soluções ótimas usando métodos gulosos, esse é um deles.
+
+Podemos ordenar os itens com base no quesito densidade, ou seja:
+
+$$
+D_i = \frac{V_i}{p_i}
+$$
+
++ Depois de ordenado, colocamos os itens de forma decrescente de densidade até que não seja possível colocar um item inteiro na mochila. 
++ Por fim colocamos a fração do próximo mais denso.
+
+Isso é suficiente para garantir a solução `ótima` para a versão fracionária.
+
+### Métodos de ramificação e corte
+
+A ramificação e corte (branch and bound) é um método para resolver de forma exata problemas de
+otimização combinatória. O método consiste em enumerar, de forma sistemática, todo o espaço de
+solução do problema exceto por estados que não podem produzir soluções melhores do que a melhor
+solução anteriormente encontrada. Essa enumeração normalmente é implementada de forma recursiva e
+pode ser visualizada como uma árvore.
+
+As soluções que não são viáveis são "cortadas" da recursão, agilizando o processo e eliminado soluções piores do que uma melhor encontrada até o momento.
+
+Problemas que podem ser resolvidos dessa forma geralmente tem caráter exponencial.
+
+Uma forma de representar o problema da mochila é com árvores que indicam se o item vai ou não na solução final.
+
+Soluções que têm o item são representadas a esquerda e marcadas com `1` enquanto as que não têm são representadas à direita e marcadas com `0`. Os itens ainda não explorados são marcados com `*`.
+
+Essa imagem ilustra isso:
+
+![recursão e corte](./Imagens/Arvore%20de%20recursão%203.png)
+
+Existem algumas formas de cortarmos a árvore:
+
++ Podemos tentar chutar um limite superior colocando todos os itens restante na mochila, no entanto esse limite não é bom pelo fato da diferença quase sempre ser muito grande.
+
++ Outra forma é resolvermos os itens que faltam colocando os itens que faltam em uma mochila fracionária, isso garante o limite superior de forma mais aproximada.
+
+**OBS:** O problema da mochila fracionária `sempre` gera um limitante superior com relação à mochila booleana, pois todos os casos desta estão incluídos nela.
+
+O algoritmo de ramificação e corte é recursivo e produz essa árvore em profundidade visitando os filhos
+da esquerda antes dos filhos da direita.
+
+#### Exemplo completo da resolução em C:
 
 
+```c
+#include <stdio.h>
+#include <stdbool.h>
 
+#define N 10 // número máximo de itens, ajuste conforme necessário
 
+typedef struct {
+    int valor;
+    int peso;
+    double densidade;
+} Item;
 
+Item itens[N]; // lista de itens
+int valor_da_solucao = 0; // valor da solução ótima
+bool itens_na_solucao[N]; // itens na solução ótima
+bool itens_na_mochila[N] = {false}; // itens na mochila ao longo do algoritmo
 
+// Função para calcular o limitante fracionário
+double mochila_fracionaria(int i, int valor, int c) {
+    double solucao_frac = 0.0;
+    for (; i < N; i++) {
+        if (itens[i].peso <= c) {
+            c -= itens[i].peso;
+            solucao_frac += itens[i].valor;
+        } else {
+            solucao_frac += itens[i].densidade * c;
+            break;
+        }
+    }
+    return valor + solucao_frac;
+}
 
+// Função de ramificação e corte
+void ramificacao_e_corte(int i, int valor, int c) {
+    if (c < 0) {
+        return; // solução inviável
+    }
+    if (c == 0 || i == N) {
+        if (valor > valor_da_solucao) { // achou uma solução melhor
+            valor_da_solucao = valor;
+            for (int j = 0; j < N; j++) {
+                itens_na_solucao[j] = itens_na_mochila[j];
+            }
+            printf("Solução atualizada: ");
+            for (int j = 0; j < N; j++) {
+                printf("%d ", itens_na_mochila[j]);
+            }
+            printf(" Valor: %d\n", valor);
+        }
+        return;
+    }
 
+    // calcula o limitante
+    double limitante = mochila_fracionaria(i, valor, c);
+    if (limitante <= valor_da_solucao) {
+        return;
+    }
 
+    // soluções com o item i
+    itens_na_mochila[i] = true;
+    ramificacao_e_corte(i + 1, valor + itens[i].valor, c - itens[i].peso);
 
+    // soluções sem o item i
+    itens_na_mochila[i] = false;
+    ramificacao_e_corte(i + 1, valor, c);
+}
 
+int main() {
+    // Exemplo: inicialização dos itens com valor e peso; densidade será calculada
+    // Ajuste conforme os valores específicos do problema
+    itens[0] = (Item){20, 10, 2.0};
+    itens[1] = (Item){30, 20, 1.5};
+    itens[2] = (Item){40, 30, 1.33};
 
+    // É preicso por os itens por densidade em ordem decrescente antes de chamar a função principal
+    // ramificacao_e_corte(0, 0, capacidade_da_mochila);
 
+    return 0;
+}
+```
 
+# Referências
 
++ Conteúdo disponibilizado pelo professor Jaime Cohen.
++ Wikipedia
 
+___
 
-
-
-
-
-
-
+Boa prova e bons estudos $:)$
