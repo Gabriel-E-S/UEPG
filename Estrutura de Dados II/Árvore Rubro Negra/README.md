@@ -54,7 +54,7 @@ Consequentemente, a troca de cores pode se propagar até a raiz da
 + Se n é filho direito de um p esquerdo em relação ao seu avô: Rotação dupla esquerda e direita. 
 + Se n é filho esquerdo de um p direito em relação ao seu avô: Rotação dupla direita e esquerda.
 
-As rotações funcionam da mesma forma do que em uma árvore AVL.
+As rotações funcionam da mesma forma do que em uma árvore AVL, com a diferença que ao fazermos as rotações o novo pai fica com cor vermelha e os filhos com cor preta.
 
 
 
