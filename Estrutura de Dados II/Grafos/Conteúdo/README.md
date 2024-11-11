@@ -61,15 +61,145 @@ os vértices de G.
 - **Grafo conexo:** se para quaisquer dois vértices existir um
 caminho entre eles.
 
-- Se um grafo G não for conexo, seus subgrafos conexos
+Se um grafo G não for conexo, seus subgrafos conexos
 maximais são chamados de componentes conexos de G.
 
+- **Floresta:** um grafo sem ciclos.
+
+- **Árvore:** floresta conexa, ou um grafo conexo acíclico.
+
+***OBS:*** No contexto de grafos, uma árvore não possui raiz, sendo
+chamada também de árvore livre.
+
+- Se G for um grafo com m arestas, então a contribuição total
+das arestas para os graus dos vértices é de duas vezes o
+número de arestas.
+
+Isso pode ser descrito pela seguinte relação:
+
+$$
+\sum _{v∈G} deg(v) = 2\cdot m
+$$
+
+Isso acontece por que ao somarmos os graus dos vértices em um vértice não direcionado contamos 2 vezes cada aresta.
+
+- Em um grafo dirigido com m arestas, uma aresta (u, v)
+contribui com uma unidade para o grau de saída de sua origem
+u e uma unidade para o grau de entrada de seu destino v.
+
+$$
+\sum _{v∈G} indeg(v) = \sum _{v∈G} outdeg(v) =  m
+$$
+
+- Seja um grafo simples G com n vértices e m arestas. Se G for
+não-dirigido:
+
+$$
+m \leq  \frac{n\cdot (n-2)}{2} 
+$$
+
+- Se G for dirigido:
+
+$$
+m \leq n \cdot (n-1)
+$$
+
+- Seja G um grafo não-dirigido com n vértices e m arestas.
+
+  + Se G for conexo: $m \geq n-1$
+
+  + Se G for uma árvore: $ m = n-1 $
+
+  + Se G for uma floresta: $ m \leq n-1 $
+
+# Como implementar um grafo?
+
+Podemos usar as seguintes representações:
+
+## Lista de adjacências
+
+Espaço requerido: $O(m+n)$.
+
+Muito usada quando o grafo é esparso, isto é, o número de
+arestas $|E|$ é muito menor do que $|V|$.
+
+Robusta, admitindo outras variantes de grafos. Por exemplo, é
+possível incluir outras informações relativas a cada aresta,
+como um valor ou peso.
+
+`Desvantagem:` Não há um modo mais rápido para se determinar
+se uma determinada aresta $(u, v)$ está presente no grafo do que
+fazer uma busca linear(sequencial por exemplo) por v na lista de adjacências relativa à
+u.
+
+![Lista de adjacências](./Imagens/Lista%20de%20adjacência.png)
+
+## Matriz de adjacência
+
+Simplicidade
+
+Permite a determinação de adjacências entre pares de vértices
+em tempo constante.
+
+`Desvantagem:` Espaço requerido para armazenamento da estrutura é O(n2),
+sendo n o número de vértices do grafo.
+
+![Matriz adj](./Imagens/Matriz%20de%20adjacência.png)
+
+## Lista de arestas
+
+Espaço requerido para o armazenamento de uma lista de
+arestas é $O(m+n)$.
+
+`Desvantagem:` custo para acessar as arestas incidentes a um
+determinado vértice, que requer uma inspeção exaustiva a
+todas as arestas para determinar se são incidentes ao dado
+vértice.
+
+![Lista de arestas](./Imagens/Lista%20de%20arestas.png)
+
+# Busca/percurso em grafos
+
+Procedimento sistemático para explorar um grafo a partir de
+um vértice inicial, visitando os vértices alcançáveis dele.
+
+Um percurso será eficiente se ele visitar todos os vértices e
+arestas em tempo proporcional ao seu número, ou seja, em
+tempo linear $O(n)$.
+
+## Percurso em profundidade
+
+Generalização do percurso em ordem pré-fixada em uma
+árvore.
+
+Tem complexidade de tempo das listas de adjacências $O(n+m)$.
+
+### Procedimento
+
+- Visita um vértice e depois visita recursivamente todos os
+vértices adjacentes a ele
+
+- Deve visitar cada vértice somente uma vez.
+
+- Como o grafo pode conter ciclos, a solução é manter um
+registro dos nós que já foram visitados, de modo que o
+percurso não entre em recorrência infinita
+
+## Aplicações
+
+- Encontrar um caminho de um vértice a outro.
+
+- Determinar se um grafo é conexo ou não.
+
+- Achar uma árvore de cobertura de um grafo conexo.
+
+- Determinar se um grafo tem ciclos.
+
+Entre muitas outras.
 
 
 
 
-
-# Busca/percurso em largura em grafos
 
 ## Percurso em largura
 
@@ -88,6 +218,8 @@ Na busca em largura, utilizaremo uma `fila` (podendo ser uma fila de prioridades
 4. Retire um vértice da fila
 
 5. Se a fila estiver vazia, termine, senão volte ao passo 3.
+
+
 
 <!-- 
 
@@ -140,3 +272,6 @@ Fila atual: 1->6->2
 ***
 
 -->
+# Referências
+
+Material do professor Marcos e Marcio.
