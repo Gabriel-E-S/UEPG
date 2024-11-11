@@ -37,11 +37,32 @@ aresta.
 
 ***OBS:*** Vértices que não possuem arestas tem grau `0`.
 
+- **Arestas paralelas ou múltiplas**: Arestas dirigidas ou não entre o
+mesmo par de vértices.
 
+- **Caminho:** Sequência alternada de vértices e arestas que se
+inicia em um vértice e termina em um vértice de tal forma que
+cada aresta seja incidente de seu antecessor e incidente em
+seu sucessor.
 
+- Ciclo: caminho em que os vértices de início e fim são os
+mesmos.
 
+***OBS:*** Quando todos os vértices do caminho ou ciclo são distintos,
+exceto pelo primeiro e pelo último, o caminho ou ciclo é
+`simples`.
 
+- **Subgrafo de um grafo G:** grafo H cujos vértices e arestas são,
+respectivamente, subconjuntos dos vértices e arestas de G.
 
+- **Subgrafo de cobertura de G:** subgrafo de G que contém todos
+os vértices de G.
+
+- **Grafo conexo:** se para quaisquer dois vértices existir um
+caminho entre eles.
+
+- Se um grafo G não for conexo, seus subgrafos conexos
+maximais são chamados de componentes conexos de G.
 
 
 
