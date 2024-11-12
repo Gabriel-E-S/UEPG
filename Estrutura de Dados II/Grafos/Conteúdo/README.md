@@ -197,13 +197,9 @@ percurso não entre em recorrência infinita
 
 Entre muitas outras.
 
-
-
-
-
 ## Percurso em largura
 
-Na busca em largura, utilizaremo uma `fila` (podendo ser uma fila de prioridades).
+Na busca em largura, utilizaremos uma `fila` (podendo ser uma fila de prioridades).
 
 ### Passo a passo
 
@@ -220,12 +216,7 @@ Na busca em largura, utilizaremo uma `fila` (podendo ser uma fila de prioridades
 5. Se a fila estiver vazia, termine, senão volte ao passo 3.
 
 
-
 <!-- 
-
-
-
-
 
 Exemplo:
 
