@@ -141,10 +141,10 @@ Quantidade de arestas que entram ou saem de um vértice.
 
 Vértices de grau 1.
 
-## Grafos usando listas de adjacência
+## Grafos usando listas de adjacência e matrizes de adjacência
 
+Para ver mais detalhes e as implementações de grafos: [clique aqui](https://github.com/Gabriel-E-S/UEPG/tree/main/Estrutura%20de%20Dados%20II/Grafos)
 
-## Grafos usando matrizes de adjacência
+# Referências
 
-
-
+Parte do conteúdo e imagens é do material do proferror Jaime Cohen.
