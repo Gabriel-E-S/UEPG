@@ -10,72 +10,79 @@
 #include <locale.h>
 #include <time.h>
 #include <stdbool.h>
-#include <windows.h>
 #include <math.h>
-#include <conio.h>
+
+#ifdef _WIN32
+    #include <windows.h>
+    #include <conio.h>
+#endif
 
 //////////////////////////////////////////////////////
 //        PARTE GRÁFICA                             //
 //////////////////////////////////////////////////////
 
-void gotoxy(int lin, int col) {
-    COORD coord;
-    coord.X = col - 1;
-    coord.Y = lin - 1;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-
-
-    CONSOLE_CURSOR_INFO info;
-    info.bVisible = false;
-    info.dwSize = 100;
-
-    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE),&info);
+// Função para mover o cursor para uma posição específica (gotoxy)
+void gotoxy(int linha, int coluna) {
+    #ifdef _WIN32
+        // Versão para Windows usando a API de console
+        COORD pos;
+        pos.X = coluna - 1;  // Ajuste para base zero
+        pos.Y = linha - 1;
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+    #else
+        // Versão para Linux usando ANSI escape codes
+        printf("\033[*;*H", linha, coluna);
+    #endif
 }
 
 //COR TEXTO
 
-enum{
-    BLACK,          //0
-    BLUE,           //1
-    GREEN,          //2
-    CYAN,           //3
-    RED,            //4
-    MAGENTA,        //5
-    BROWN,          //6
-    LIGHTGRAY,      //7
-    DARKGRAY,       //8
-    LIGHTBLUE,      //9
-    LIGHTGREEN,     //10
-    LIGHTCYAN,      //11
-    LIGHTRED,       //12
-    LIGHTMAGENTA,   //13
-    YELLOW,         //14
-    WHITE           //15
-};
-//COR FUNDO
-enum{
-    _BLACK=0,          //0
-    _BLUE=16,           //1
-    _GREEN=32,          //2
-    _CYAN=46,           //3
-    _RED=64,            //4
-    _MAGENTA=80,        //5
-    _BROWN=96,          //6
-    _LIGHTGRAY=112,      //7
-    _DARKGRAY=128,       //8
-    _LIGHTBLUE=144,      //9
-    _LIGHTGREEN=160,     //10
-    _LIGHTCYAN=176,      //11
-    _LIGHTRED=192,       //12
-    _LIGHTMAGENTA=208,   //13
-    _YELLOW=224,         //14
-    _WHITE=240           //15
+enum {
+    BLACK, BLUE, GREEN, CYAN, RED, MAGENTA, BROWN, LIGHTGRAY,
+    DARKGRAY, LIGHTBLUE, LIGHTGREEN, LIGHTCYAN, LIGHTRED, LIGHTMAGENTA, YELLOW, WHITE
 };
 
-//função para mudar a cor do texto
+enum {
+    _BLACK = 0, _BLUE = 16, _GREEN = 32, _CYAN = 48, _RED = 64, 
+    _MAGENTA = 80, _BROWN = 96, _LIGHTGRAY = 112, _DARKGRAY = 128, 
+    _LIGHTBLUE = 144, _LIGHTGREEN = 160, _LIGHTCYAN = 176, 
+    _LIGHTRED = 192, _LIGHTMAGENTA = 208, _YELLOW = 224, _WHITE = 240
+};
 
-void cortexto(int letras, int fundo){
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),letras+fundo);
+
+// Função para pausar o programa até que o usuário pressione Enter (pause)
+void pause() {
+    #ifdef _WIN32
+        // Versão para Windows
+        system("pause");
+    #else
+        // Versão para Linux
+        printf("Pressione Enter para continuar...");
+        getchar();
+    #endif
+}
+
+
+/ Função para definir a cor do texto e do fundo
+void cortexto(int letras, int fundo) {
+    #ifdef _WIN32
+        // Windows: usa SetConsoleTextAttribute
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), letras + fundo);
+    #else
+        // Linux: usa ANSI escape codes
+        int text_color = letras;
+        int background_color = (fundo / 16) + 40;  // Divide por 16 para alinhar com ANSI e adiciona 40 para fundo
+
+        printf("\033[%d;%dm", background_color, text_color + 30);
+    #endif
+}
+
+void resetarCores() {
+    #ifdef _WIN32
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
+    #else
+        printf("\033[0m");  // Reseta para a cor padrão no Linux
+    #endif
 }
 
 // procedimento que imprime colunas
@@ -381,7 +388,7 @@ void imprimeGrafo(){
             printf("\n");
         }
     }
-    printf("\n\n\n\n   ");system("pause");  // O comando system("pause") pausa a execução do programa até uma tecla ser pressionada.
+    printf("\n\n\n\n   "); pause();  // O comando system("pause") pausa a execução do programa até uma tecla ser pressionada.
 }
 
 // Procedimento para imprimir uma arte ascii.
@@ -418,7 +425,7 @@ void menu(){
 
     while(opc != 0){
 
-        system("cls");
+        cls();
         arteAscii(1,50);
         opc = MENUPRINCIPAL(2,3,5,matopcs);
          gotoxy(15,5);
