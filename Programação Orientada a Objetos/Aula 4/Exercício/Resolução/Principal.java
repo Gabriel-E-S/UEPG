@@ -1,22 +1,29 @@
-public class Principal{
+public class Principal {
 
   public static void main(String[] args) {
 
-    Data dia1 = new Data(25,12,2000);
-    Data dia2 = new Data(1,11,1990);
+    Produto vetorDeProdutos[]   = new Produto[2]; // Criando o vetor de produtos.
 
-    Aluno aluno1 = new Aluno("Jose","12345",dia1,"4321");
+    Data validadeDoNescau = new Data(12,02,2028); // Criando as datas para os construtores.
 
-    Funcionario funcionario1 = new Funcionario("Maria","1345",dia2,"4421",200);
-    
-    Chefe chefe1 = new Chefe("Mario","13435",dia2,"2421",200,"Chefe de departamento");
+    Data validadeDoToddynho = new Data(15,4,2027);
 
-    System.out.println(aluno1);
+    vetorDeProdutos[0] = new Produto("Lata de Nescau",2,10,validadeDoNescau);
+    vetorDeProdutos[1] = new Produto("Garrafa de Toddynho",validadeDoToddynho);
 
-    System.out.println(funcionario1);
-    System.out.println("Bonificação = " + funcionario1.bonificar() + "\n");
-    System.out.println(chefe1);
-    System.out.println("Bonificação = " + chefe1.bonificar() + "\n");
-    
+    System.out.println("\nAntes das modificacoes\n");
+    System.out.println(vetorDeProdutos[0]);
+    System.out.println(vetorDeProdutos[1]);
+
+    vetorDeProdutos[0].setValidade(10,1,2026); // Fazendo as modificacões.
+
+    Data validadeNova = new Data(11,11,2026);
+
+    vetorDeProdutos[1].setValidade(validadeNova);
+
+    System.out.println("\nDepois das modificacoes\n");
+    System.out.println(vetorDeProdutos[0]);
+    System.out.println(vetorDeProdutos[1]);
+
   }
 }

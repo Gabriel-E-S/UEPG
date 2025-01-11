@@ -1,120 +1,72 @@
-# Sistema de Cadastro de Funcionários e Alunos da Universidade
+# Sistema de Controle de Estoque
 
-## Estrutura do Sistema
-O sistema é constituído por 5 classes:
-- `Data`
-- `Pessoa`
-- `Aluno`
-- `Funcionario`
-- `Principal`
+Este sistema tem como objetivo controlar o estoque de produtos, utilizando classes para representar a data e os produtos.
 
----
+## Parte I - Classe Data
 
-## Classe Data
-### Atributos Privados
-| Identificador | Tipo | Descrição                  |
-|---------------|------|----------------------------|
-| `dia`         | `int`| Dia do mês (1..31)         |
-| `mes`         | `int`| Mês do ano (1..12)         |
-| `ano`         | `int`| Ano (1950..)               |
+A classe `Data` é responsável por armazenar informações sobre a data (dia, mês e ano).
 
-### Regras
-Para simplificar o programa, considere que todos os meses têm 31 dias.
+### Atributos privados
 
-### Métodos
-- Métodos `get` e `set` para todos os atributos.
-- Método `toString()`.
-- Método construtor com 3 parâmetros: `dia`, `mês` e `ano`.
+| Identificador | Tipo | Descrição |
+|---------------|------|----------|
+| dia           | int  | Dia do mês (1..31) |
+| mes           | int  | Mês do ano (1..12) |
+| ano           | int  | Ano (2024..) |
 
----
+#### Métodos
 
-## Classe Pessoa
-### Atributos Privados
-| Identificador | Tipo     | Descrição                       |
-|---------------|----------|---------------------------------|
-| `nome`        | `String` | Nome da pessoa                 |
-| `telefone`    | `String` | Telefone da pessoa             |
-| `nascimento`  | `Data`   | Data de nascimento da pessoa   |
-
-### Métodos
-- Métodos `get` e `set` para os atributos `nome` e `telefone`.
-- Método `toString()`.
-
-#### Métodos Públicos
-| Identificador   | Retorno | Parâmetros            | Descrição                                                                 |
-|-----------------|---------|-----------------------|---------------------------------------------------------------------------|
-| `Pessoa`        |         | Nome, telefone, data de nascimento | Inicia os valores dos três atributos. O parâmetro data de nascimento é um objeto da classe `Data`. |
-| `Pessoa`        |         | Nome, data de nascimento | Inicia os valores dos atributos `nome` e `nascimento`. O parâmetro data de nascimento é um objeto da classe `Data`. |
-| `setNascimento` | `void`  | Data de nascimento    | Define o valor da data de nascimento passando como parâmetro um objeto da classe `Data`. |
-
----
-
-## Classe Aluno (estende a classe Pessoa)
-### Atributos Privados
-| Identificador | Tipo     | Descrição     |
-|---------------|----------|---------------|
-| `ra`          | `String` | RA do aluno   |
-
-### Métodos
-- Métodos `get` e `set` para o atributo `ra`.
-- Método `toString()`.
+- **getDia()**: Retorna o valor do atributo `dia`.
+- **setDia(int dia)**: Define o valor do atributo `dia`.
+- **getMes()**: Retorna o valor do atributo `mes`.
+- **setMes(int mes)**: Define o valor do atributo `mes`.
+- **getAno()**: Retorna o valor do atributo `ano`.
+- **setAno(int ano)**: Define o valor do atributo `ano`.
+- **toString()**: Retorna uma representação da data no formato `dd/mm/aaaa`.
 
 #### Construtores
-| Identificador | Retorno | Parâmetros                                   | Descrição                                                                 |
-|---------------|---------|---------------------------------------------|---------------------------------------------------------------------------|
-| `Aluno`       |         | Nome, telefone, data de nascimento, RA      | Inicia os valores dos quatro atributos. O parâmetro data de nascimento é um objeto da classe `Data`. |
-| `Aluno`       |         | Nome, data de nascimento, RA                | Inicia os valores dos atributos `nome`, `nascimento` e `ra`. O parâmetro data de nascimento é um objeto da classe `Data`. |
 
----
+| Identificador | Retorno | Parâmetro | Descrição |
+|---------------|---------|-----------|----------|
+| `Data()`      | void    | dia, mês, ano | Inicia os valores dos três atributos. |
+| `Data()`      | void    | dia, mês | Inicia os valores dos atributos `dia` e `mês` e considera o ano de 2024. |
 
-## Classe Funcionario (estende a classe Pessoa)
-### Atributos Privados
-| Identificador | Tipo     | Descrição                        |
-|---------------|----------|----------------------------------|
-| `registro`    | `String` | Registro profissional do funcionário |
-| `salario`     | `double` | Salário do funcionário           |
+## Parte II - Classe Produto
 
-### Métodos
-- Métodos `get` e `set` para os atributos `registro` e `salario`.
-- Método `toString()`.
+A classe `Produto` é responsável por representar os produtos no estoque. Ela possui uma relação de composição com a classe `Data`, já que cada produto possui uma data de validade.
 
-#### Construtores
-| Identificador  | Retorno | Parâmetros                                            | Descrição                                                                 |
-|----------------|---------|-----------------------------------------------------|---------------------------------------------------------------------------|
-| `Funcionario`  |         | Nome, telefone, data de nascimento, registro, salário | Inicia os valores dos cinco atributos. O parâmetro data de nascimento é um objeto da classe `Data`. |
-| `Funcionario`  |         | Nome, data de nascimento, registro, salário          | Inicia os valores dos atributos `nome`, `nascimento`, `registro` e `salario`. O parâmetro data de nascimento é um objeto da classe `Data`. |
+### Atributos privados
 
-#### Método Específico
-| Identificador | Retorno  | Descrição                                      |
-|---------------|----------|------------------------------------------------|
-| `bonificar`   | `double` | Retorna a bonificação de um funcionário, que equivale a 10% do salário básico. |
+| Identificador | Tipo   | Descrição |
+|---------------|--------|----------|
+| nome          | String | Nome do produto |
+| preco         | double | Preço de venda do produto |
+| quantidade    | int    | Quantidade do produto disponível em estoque |
+| validade      | Data   | Data de validade do produto |
 
----
+#### Métodos
 
-## Classe Chefe (estende a classe Funcionario)
-### Atributos Privados
-| Identificador | Tipo     | Descrição                        |
-|---------------|----------|----------------------------------|
-| `cargo`       | `String` | Cargo de chefia do funcionário  |
-
-### Métodos
-- Métodos `get` e `set` para o atributo `cargo`.
-- Método `toString()`.
+- **getNome()**: Retorna o valor do atributo `nome`.
+- **setNome(String nome)**: Define o valor do atributo `nome`.
+- **getPreco()**: Retorna o valor do atributo `preco`.
+- **setPreco(double preco)**: Define o valor do atributo `preco`.
+- **getQuantidade()**: Retorna o valor do atributo `quantidade`.
+- **setQuantidade(int quantidade)**: Define o valor do atributo `quantidade`.
+- **toString()**: Retorna uma representação do produto.
+- **setValidade(int dia, int mes, int ano)**: Define a validade do produto, passando os valores de `dia`, `mes` e `ano`.
+- **setValidade(Data validade)**: Define a validade do produto, passando um objeto da classe `Data`.
+- **vender(int qtde)**: Se houver itens suficientes no estoque, faz a venda e diminui a quantidade de produtos em estoque.
+- **comprar(int qtde)**: Compra uma determinada quantidade de produtos do fornecedor.
 
 #### Construtores
-| Identificador | Retorno | Parâmetros                                                   | Descrição                                                                 |
-|---------------|---------|-----------------------------------------------------------|---------------------------------------------------------------------------|
-| `Chefe`       |         | Nome, telefone, data de nascimento, registro, salário, cargo | Inicia os valores dos seis atributos. O parâmetro data de nascimento é um objeto da classe `Data`. |
-| `Chefe`       |         | Nome, data de nascimento, registro, salário, cargo          | Inicia os valores dos atributos `nome`, `nascimento`, `registro`, `salario` e `cargo`. O parâmetro data de nascimento é um objeto da classe `Data`. |
 
-#### Método Específico
-| Identificador | Retorno  | Descrição                                      |
-|---------------|----------|------------------------------------------------|
-| `bonificar`   | `double` | Retorna a bonificação de um funcionário, que equivale a 20% do salário básico. |
+| Identificador | Retorno | Parâmetro | Descrição |
+|---------------|---------|-----------|----------|
+| `Produto()`   | void    | nome, qtd, preco, validade | Inicia os valores dos quatro atributos. O parâmetro `validade` é um objeto da classe `Data`. |
+| `Produto()`   | void    | nome, preco, validade | Inicia os valores dos atributos `nome`, `preco` e `validade`. O parâmetro `validade` é um objeto da classe `Data`. |
+| `Produto()`   | void    | nome, validade | Inicia os valores dos atributos `nome` e `validade`. O parâmetro `validade` é um objeto da classe `Data`. |
 
----
+## Parte III - Classe Principal
 
-## Classe Principal
-Desenvolver uma classe `Principal`, na qual sejam criados `Aluno`, `Funcionario` e `Chefe`, e sejam impressas as informações deles, incluindo:
-- Salário.
-- Bonificações para funcionários e chefes.
+A classe `Principal` tem como objetivo criar um vetor de produtos e incluir pelo menos dois produtos, utilizando diferentes métodos construtores.
+
