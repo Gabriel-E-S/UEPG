@@ -1,0 +1,162 @@
+-- 1. Tabela RECEPCIONISTA
+INSERT INTO Recepcionista (cod_r, nome_recepcionista,
+cpf_recepcionista, salario_recepcionista,
+data_nascimento_recepcionista) VALUES
+(1, 'Ana Clara Souza', '11122233301', 2500.00, '1995-03-15'),
+(2, 'Beatriz Lima', '22233344402', 2600.00, '1990-07-20'),
+(3, 'Carlos Mendes', '33344455503', 2500.00, '1998-11-05'),
+(4, 'Daniela Rocha', '44455566604', 2800.00, '1985-01-30'),
+(5, 'Eduardo Silva', '55566677705', 2500.00, '2000-05-12');
+-- 2. Tabela PROFESSOR
+INSERT INTO Professor (cod_p, cref, data_nascimento_professor,
+salario_professor, cpf_professor, nome_professor) VALUES
+(1, '1234-G/PR', '1980-05-10', 4500.00, '99988877701', 'Roberto
+Justus'),
+(2, '5678-G/PR', '1992-08-22', 3800.00, '88877766602', 'Fernanda
+Gentil'),
+(3, '9012-G/PR', '1985-12-01', 4200.00, '77766655503', 'Paulo Muzy'),
+(4, '3456-G/PR', '1995-02-14', 3500.00, '66655544404', 'Renato
+Cariani'),
+(5, '7890-G/PR', '1990-06-30', 4000.00, '55544433305', 'Juliana Paes');
+-- 3. Tabela SERVIDOR_GYMPASS
+INSERT INTO Servidor_Gympass (cod_gympass, status_validacao) VALUES
+(100, 'Valido'), (101, 'Valido'), (102, 'Invalido'), (103, 'Valido'),
+(104, 'Valido'),
+(105, 'Erro'), (106, 'Valido'), (107, 'Invalido'), (108, 'Valido'),
+(109, 'Valido'),
+
+(110, 'Valido'), (111, 'Valido'), (112, 'Invalido'), (113, 'Valido'),
+(114, 'Valido'),
+(115, 'Erro'), (116, 'Valido'), (117, 'Valido'), (118, 'Invalido'),
+(119, 'Valido');
+-- 4. Tabela PLANO
+INSERT INTO Plano (cod_plano, nome_plano, preco_plano, duracao,
+situacao) VALUES
+(1, 'Mensal Gold', 120.00, 30, 'Ativo'),
+(2, 'Trimestral Power', 300.00, 90, 'Ativo'),
+(3, 'Semestral Fit', 550.00, 180, 'Ativo'),
+(4, 'Anual Pro', 1000.00, 365, 'Ativo');
+-- 5. Tabela CATRACA
+INSERT INTO Catraca (cod_c, status, cod_gympass) VALUES
+(1, 'Liberado', NULL), -- Catraca normal
+(2, 'Liberado', NULL), -- Catraca normal
+(3, 'Liberado', 100); -- Catraca integrada Gympass
+-- 6. Tabela MAQUINA_DE_PAGAMENTO
+INSERT INTO Maquina_de_Pagamento (cod_m, status_pagamento, cod_plano)
+VALUES
+(1, 'Aprovado', 1), (2, 'Aprovado', 2), (3, 'Aprovado', 4), (4,
+'Aprovado', 1), (5, 'Pendente', 3),
+(6, 'Aprovado', 2), (7, 'Recusado', 1), (8, 'Aprovado', 4), (9,
+'Aprovado', 1), (10, 'Aprovado', 3),
+(11, 'Aprovado', 1), (12, 'Aprovado', 2), (13, 'Aprovado', 4), (14,
+'Aprovado', 1), (15, 'Pendente', 3),
+(16, 'Aprovado', 2), (17, 'Recusado', 1), (18, 'Aprovado', 4), (19,
+'Aprovado', 1), (20, 'Aprovado', 3),
+(21, 'Aprovado', 1), (22, 'Aprovado', 2), (23, 'Aprovado', 4), (24,
+'Aprovado', 1), (25, 'Pendente', 3),
+(26, 'Aprovado', 2), (27, 'Recusado', 1), (28, 'Aprovado', 4), (29,
+'Aprovado', 1), (30, 'Aprovado', 3);
+-- 7. Tabela ALUNO
+INSERT INTO Aluno (cod_a, nome_aluno, cpf_aluno, data_nascimento_aluno,
+digital, cod_r, cod_c, cod_m, cod_plano) VALUES
+(1, 'João da Silva', '10101010101', '1999-01-10', 'DIGITAL_HASH_1', 1,
+1, 1, 1),
+(2, 'Maria Oliveira', '20202020202', '1995-05-20', 'DIGITAL_HASH_2', 2,
+2, 2, 2),
+
+(3, 'Pedro Santos', '30303030303', '2000-12-15', 'DIGITAL_HASH_3', 1,
+1, 3, 4),
+(4, 'Lucas Ferreira', '40404040404', '1998-03-08', 'DIGITAL_HASH_4', 3,
+2, 4, 1),
+(5, 'Carla Dias', '50505050505', '1987-07-12', 'DIGITAL_HASH_5', 2, 1,
+5, 3),
+(6, 'Marcos Vinicius', '60606060606', '1992-09-30', 'DIGITAL_HASH_6',
+4, 2, 6, 2),
+(7, 'Julia Roberts', '70707070707', '1994-11-01', 'DIGITAL_HASH_7', 1,
+1, 7, 1),
+(8, 'Fernando Collor', '80808080808', '1980-02-25', 'DIGITAL_HASH_8',
+5, 2, 8, 4),
+(9, 'Gustavo Lima', '90909090909', '1996-06-18', 'DIGITAL_HASH_9', 3,
+1, 9, 1),
+(10, 'Andressa Suita', '11111111111', '1993-08-14', 'DIGITAL_HASH_10',
+2, 2, 10, 3),
+(11, 'Bruno Mars', '12121212121', '1990-01-01', 'DIGITAL_HASH_11', 1,
+1, 11, 1),
+(12, 'Lady Gaga', '13131313131', '1986-04-10', 'DIGITAL_HASH_12', 4, 2,
+12, 2),
+(13, 'Tom Cruise', '14141414141', '1975-07-03', 'DIGITAL_HASH_13', 5,
+1, 13, 4),
+(14, 'Will Smith', '15151515151', '1978-09-25', 'DIGITAL_HASH_14', 2,
+2, 14, 1),
+(15, 'Angelina Jolie', '16161616161', '1982-12-12', 'DIGITAL_HASH_15',
+1, 1, 15, 3),
+(16, 'Brad Pitt', '17171717171', '1970-10-30', 'DIGITAL_HASH_16', 3, 2,
+16, 2),
+(17, 'Leonardo DiCaprio', '18181818181', '1974-11-11',
+'DIGITAL_HASH_17', 4, 1, 17, 1),
+(18, 'Johnny Depp', '19191919191', '1963-06-09', 'DIGITAL_HASH_18', 5,
+2, 18, 4),
+(19, 'Robert Downey Jr', '21212121212', '1965-04-04',
+'DIGITAL_HASH_19', 1, 1, 19, 1),
+(20, 'Scarlett Johansson', '23232323232', '1984-11-22',
+'DIGITAL_HASH_20', 2, 2, 20, 3),
+(21, 'Chris Evans', '24242424242', '1981-06-13', 'DIGITAL_HASH_21', 3,
+1, 21, 1),
+(22, 'Chris Hemsworth', '25252525252', '1983-08-11', 'DIGITAL_HASH_22',
+4, 2, 22, 2),
+(23, 'Mark Ruffalo', '26262626262', '1967-11-22', 'DIGITAL_HASH_23', 5,
+1, 23, 4),
+
+(24, 'Jeremy Renner', '27272727272', '1971-01-07', 'DIGITAL_HASH_24',
+1, 2, 24, 1),
+(25, 'Elizabeth Olsen', '28282828282', '1989-02-16', 'DIGITAL_HASH_25',
+2, 1, 25, 3),
+(26, 'Paul Rudd', '29292929292', '1969-04-06', 'DIGITAL_HASH_26', 3, 2,
+26, 2),
+(27, 'Benedict Cumberbatch', '31313131313', '1976-07-19',
+'DIGITAL_HASH_27', 4, 1, 27, 1),
+(28, 'Tom Holland', '32323232323', '1996-06-01', 'DIGITAL_HASH_28', 5,
+2, 28, 4),
+(29, 'Chadwick Boseman', '34343434343', '1976-11-29',
+'DIGITAL_HASH_29', 1, 1, 29, 1),
+(30, 'Brie Larson', '35353535353', '1989-10-01', 'DIGITAL_HASH_30', 2,
+2, 30, 3);
+-- 8. Tabela ALUNO_EXTERNO
+INSERT INTO Aluno_externo (cod_ae, cod_gympass) VALUES
+(1, 101), (2, 103), (3, 104), (4, 106), (5, 108),
+(6, 109), (7, 110), (8, 111), (9, 113), (10, 114);
+-- 9. Tabela AVALIACAO_FISICA
+INSERT INTO Avaliacao_Fisica (data, cod_a, med_perna, med_braco,
+med_cintura, percentual_gordura, peso, altura, cod_r, cod_p) VALUES
+('2024-01-10', 1, 55.0, 35.0, 80.0, 15.5, 75.0, 1.75, 1, 1),
+('2024-02-15', 2, 50.0, 28.0, 65.0, 22.0, 60.0, 1.65, 2, 2),
+('2024-03-20', 3, 60.0, 40.0, 85.0, 12.0, 85.0, 1.80, 1, 3),
+('2024-01-05', 4, 58.0, 38.0, 82.0, 18.0, 78.0, 1.78, 3, 4),
+('2024-04-12', 5, 52.0, 30.0, 70.0, 25.0, 65.0, 1.60, 2, 5),
+('2024-05-20', 1, 56.0, 36.0, 78.0, 14.5, 74.0, 1.75, 1, 1),
+('2024-02-10', 6, 62.0, 42.0, 90.0, 20.0, 90.0, 1.85, 4, 1),
+('2024-03-15', 7, 54.0, 29.0, 68.0, 21.0, 62.0, 1.70, 1, 2),
+('2024-04-22', 8, 65.0, 45.0, 95.0, 18.0, 95.0, 1.90, 5, 3),
+('2024-05-05', 9, 57.0, 37.0, 80.0, 16.0, 76.0, 1.77, 3, 4),
+('2024-06-10', 10, 53.0, 31.0, 72.0, 24.0, 68.0, 1.68, 2, 5),
+('2024-01-20', 11, 59.0, 39.0, 83.0, 15.0, 80.0, 1.82, 1, 1),
+('2024-02-25', 12, 51.0, 27.0, 64.0, 19.0, 58.0, 1.62, 4, 2),
+('2024-03-30', 13, 63.0, 43.0, 88.0, 14.0, 88.0, 1.80, 5, 3),
+('2024-04-05', 14, 60.0, 41.0, 86.0, 17.0, 82.0, 1.85, 2, 4),
+('2024-05-15', 15, 49.0, 26.0, 62.0, 18.0, 55.0, 1.69, 1, 5),
+('2024-06-20', 16, 64.0, 44.0, 89.0, 13.0, 84.0, 1.80, 3, 1),
+('2024-01-15', 17, 56.0, 36.0, 81.0, 16.0, 77.0, 1.83, 4, 2),
+('2024-02-20', 18, 61.0, 40.0, 87.0, 15.0, 86.0, 1.78, 5, 3),
+('2024-03-25', 19, 58.0, 38.0, 84.0, 19.0, 79.0, 1.74, 1, 4),
+
+('2024-04-30', 20, 52.0, 32.0, 71.0, 23.0, 63.0, 1.60, 2, 5),
+('2024-05-10', 21, 66.0, 46.0, 92.0, 11.0, 92.0, 1.84, 3, 1),
+('2024-06-15', 22, 68.0, 48.0, 94.0, 10.0, 98.0, 1.91, 4, 2),
+('2024-01-25', 23, 59.0, 39.0, 85.0, 17.0, 81.0, 1.73, 5, 3),
+('2024-02-10', 24, 62.0, 41.0, 88.0, 16.0, 83.0, 1.75, 1, 4),
+('2024-03-12', 25, 50.0, 28.0, 66.0, 20.0, 59.0, 1.68, 2, 5),
+('2024-04-18', 26, 57.0, 37.0, 82.0, 18.0, 75.0, 1.78, 3, 1),
+('2024-05-22', 27, 61.0, 42.0, 86.0, 14.0, 84.0, 1.83, 4, 2),
+('2024-06-25', 28, 55.0, 35.0, 79.0, 13.0, 72.0, 1.73, 5, 3),
+('2024-01-30', 29, 63.0, 43.0, 89.0, 12.0, 89.0, 1.83, 1, 4),
+('2024-02-28', 30, 54.0, 33.0, 74.0, 22.0, 64.0, 1.70, 2, 5);

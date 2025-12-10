@@ -1,0 +1,9 @@
+DROP TABLE Avaliacao_Fisica CASCADE;
+DROP TABLE Aluno CASCADE;
+DROP TABLE Recepcionista CASCADE ;
+DROP TABLE Catraca CASCADE;
+DROP TABLE Aluno_externo CASCADE;
+DROP TABLE Servidor_Gympass CASCADE ;
+DROP TABLE Plano CASCADE;
+DROP TABLE Maquina_de_Pagamento CASCADE;
+DROP TABLE Professor CASCADE;
