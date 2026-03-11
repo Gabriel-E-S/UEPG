@@ -1,0 +1,33 @@
+/* tag chama com somente o nome dela */
+
+h1{
+    color: aqua;
+    font-size: 30px;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 500;
+    width: auto;
+}
+
+p{
+    color: blueviolet;
+} 
+
+h2{
+    overflow: auto;
+    color: rgb(0, 0, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+}
+
+/* Classe chama com . */
+
+.paragrafo2{
+    color: red;
+}
+
+/* Id chama com # */
+
+#paragrafo3{
+    color: green;
+}
