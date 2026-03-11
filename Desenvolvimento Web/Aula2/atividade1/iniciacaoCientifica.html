@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Iniciacao Cientifica 2025</title>
+
+    <link rel="stylesheet" href="./styles/stylesIniciacaoCientifica.css">
+
 </head>
 <body>
-    <h1>Polarização de macrófagos em contextos de PAMPS(Padrões Moleculares Associados a patógenos) e em 
-        presença de adenocarcinoma de mama.
+
+    <h1 class="tituloPrincipal">Polarização de macrófagos em contextos de PAMPS(Padrões Moleculares Associados a patógenos)
     </h1>
 
-    <section>
+    <section class="introducao">
         <h2>Introdução ao projeto</h2>
 
-        <p>O objetivo principal deste estudo foi aprofundar os conhecimentos envolvidos em
+        <p class="paragrafoIntroducao">O objetivo principal deste estudo foi aprofundar os conhecimentos envolvidos em
         polarização dos macrófagos em suas duas variantes denominadas de M1 e M2, possuindo
         caráter inflamatório e de reconstrução respectivamente. Para realizar isso, foram
         construídas duas redes complexas de sinalização utilizando o conceito de grafo, definido
@@ -27,6 +30,102 @@
         fundamental para desenvolver diferentes abordagens em imunologia direcionadas a essas
         situações.</p>
     </section>
+
+    <section class="Materiais e métodos">
+        <h2>Materiais e métodos</h2>
+
+        Materiais utlizados:
+
+        <ul>
+            <li>Linguagem de programação R</li>
+            <li>Interface de desenvolvimento RStudio</li>
+        </ul>
+
+        Etapas do projeto:
+
+        <ol>
+
+            <li> Revisão de literatura  <br>
+
+                    Foi realizada uma busca de artigos e referências nas bases de referências científicas 
+                    Scopus, Google Scholar, PubMed e no portal de períodicos da CAPES, utilizando as 
+                    chaves de pesquisa “MACROPHAGE POLARIZATION”, “M1 AND MACROPHAGE”, “M2 
+                    AND MACROPHAGE”, “THEORETICAL KNOCKOUTS AND MACROPHAGES”. 
+            </li>
+            
+            <li>
+                Construção da rede base e algoritmo de análise <br>
+                    A partir da revisão de literatura, foi construída uma rede base de sinalização, de forma 
+                    mais específica um multigrafo, onde os vértices representam células e as arestas as 
+                    substâncias sinalizadoras entre elas. Para concretizar e efetuar as operações, foi criado 
+                    um algoritmo de programação em linguagem R que lê os dados de entrada e com base 
+                    neles cria um multigrafo, verificando se este é fortemente conectado, definição que indica 
+                    que todos os vértices possuem pelo menos uma entrada e uma saída, inserindo um vértice 
+                    chamado de “Environment” e duas arestas de “input” e “output” a fim de garantir essa 
+                    característica. 
+                    Primeiramente, constrói-se a matriz de adjacência do grafo, a qual é posteriormente 
+                    convertida em matriz de transição. Essa matriz descreve as probabilidades de um 
+                    caminhante aleatório deslocar-se entre os vértices ao longo de um percurso. Em seguida, 
+                    calculam-se autovalores e autovetores a partir da transposta dessa matriz, procedimento 
+                    que permite determinar o vetor de fluxo estacionário da rede. Esse vetor expressa o 
+                    regime dinâmico intrínseco do sistema, isto é, seu estado de equilíbrio em ausência de 3
+                    perturbações externas. Após isso são efetuados os “knockouts” de vértices retirando cada 
+                    um por vez e calculando o seu índice RME, proposto por Miranda (2016), em conjunto do 
+                    número de classes comunicantes resultante. Esse mesmo processo é repetido para as 
+                    arestas, retirando a cada interação todas aquelas com o mesmo nome, por fim gerando 
+                    duas tabelas de resultados ao final da análise. O RME indica a importância de um 
+                    componente da rede de sinalização. Com valores variando de 0 a 1, valores mais 
+                    próximos da unidade indicam maior relevância em seu contexto. 
+            </li>
+            <li> Análise estatística <br>
+                Em outro “script” de programação, são efetuadas a leitura e análise estatística dos dados 
+                obtidos na etapa anterior. A fim de testar todos os dados obtidos, foram criados 3 grupos 
+                de testes: CellsKO, SignalKO e allKO, representando  os dados dos nocautes de células, 
+                sinais e o último o comjunto de ambos. 
+                São executados os testes de normalidade e uniformidade de Kolmogorov-Smirnov, 
+                Anderson-Darling, Shapiro-Wilk e Lillie-fors para verificar se os conjuntos criados são 
+                uniformes ou não, seguidos da análise dos componentes “outiliers”, que são aqueles que 
+                se destacaram mais possuindo índice RME maior, utilizando o método dos quartis e o de 
+                Tukey, utilizando a fórmula  Q3+1.5×IQR . 
+            </li>
+            <li> Interpretação dos resultados obtidos  <br>
+                A partir dos componentes de maior destaque, realizou-se uma nova revisão de literatura 
+                nas mesmas bases de referência, utilizando a chave de busca “nome da substância AND 
+                PAMPS”. O propósito dessa etapa foi avaliar se as evidências disponíveis na literatura 
+                científica corroboram ou refutam os resultados obtidos.
+            </li>
+        </ol>
+    </section>
+
+    <section class="Resultados">
+
+        <p class="pGrafo">Grafo obtido na pesquisa</p>
+
+        <img src="./imagens/grafo.png" alt="grafo" id="grafo">
+    </section>
+
+    <section>
+        <h2>Conclusão</h2>
+
+        Em resumo, nosso estudo propõe uma nova rede computacional baseada em 
+        multigrafos que avalia quantitativamente a polarização de macrófagos por meio da 
+        realização de nocautes teóricos retirando vértices e arestas, o modelo destacou a 
+        importância de componentes imunológicos específicos, em destaque -- IL-10, M1, M2, 
+        17 
+        IFN-gamma, Th1 e Th2 – na manutenção do equilíbrio entre estados pró-inflamatórios e 
+        anti-inflamatórios. A análise estatística do Erro Médio Relativo (RME) evidencia de forma 
+        ainda mais clara o impacto heterogêneo desses “knockouts”, indicando que a polarização 
+        dos macrófagos é regulada por uma rede estruturada de sinais celulares, e não por 
+        interações aleatórias. Esses achados aprofundam a compreensão dos mecanismos de 
+        regulação imunológica e destacam potenciais alvos terapêuticos para a modulação de 
+        respostas inflamatórias, trazendo à tona a utilidade de novos algoritmos que realizem esse 
+        tipo de análise. Estudos futuros que integrem validação experimental e incorporem novas 
+        vias à rede serão fundamentais para refinar o modelo e ampliar sua relevância clínica. 
+        Além disso, outro caminho de estudo pode vir a estudar outros fenômenos específicos 
+        como o adenocarcinoma e explorar a construção de redes separadas para cada tipo de 
+        PAMP. 
+    </section>
+
 
 
 
