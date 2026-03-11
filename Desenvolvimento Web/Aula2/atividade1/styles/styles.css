@@ -1,45 +1,63 @@
 body{
-    padding: 0px;
-}
-
-h2{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 30px;
-    font-weight: 10;
-    text-align: center;
-}
-
-h3{
-    font-size: 25px;
+    background-color: azure;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 .introducao{
-text-align: center;
+    text-align: center;
     background-color: cadetblue;
-    color: white; /* Deixa o texto branco para dar contraste com o fundo azul */
-    padding: 20px 0; /* Dá um "respiro" dentro da caixa azul */
-    margin-bottom: 20px;
+    color: white;
+    padding: 20px 0; 
+    margin-bottom: 0px;
 }
 
 .curiosidades{
     text-align: center;
+    margin-bottom: 40px;
+    background-color: rgb(70, 115, 117);
+    padding: 10px;
 }
 
-.tituloSobreMim{
-    font-family: 'Times New Roman', Times, serif;
+.curiosidades a{
+    text-decoration: none;
+    color: rgb(216, 213, 213);
+    font-weight: bold;
+    margin: 0 15px;
+}
+
+h2{
+    font-family: monospace;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+h3{
+    font-size: 22px;
+}
+
+.sobreMim{
     display: flex;
-    font-size: 20px;
+    align-items: center;
     gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.textoSobreMim{
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.6;
 }
 
 .areaAcademica{
     font-family: 'Times New Roman', Times, serif;
-    font-size: medium;
-    font-size: 30px;
-}
-
-.sobreMim{
-    
+    font-size: 25px;
+    max-width: 1200px;
+    margin: 40px auto;
 }
 
 .minhaFoto{
@@ -50,12 +68,27 @@ text-align: center;
     margin: 0 auto;
 }
 
-.redesSociais{
-    display: flex;
-    gap: 10px;
-    justify-content: center;
+.grupoTecnologias{
+    margin-bottom: 40px auto;
+    text-align: center;
+    
+    
 }
 
-body{
-    background-color:azure;
+.imagensLinguagens{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
 }
+
+.redesSociais{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    padding-bottom: 50px;
+}
+
