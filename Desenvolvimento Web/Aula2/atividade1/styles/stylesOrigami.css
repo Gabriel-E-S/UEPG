@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f4f7f6; 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #333;
+    font-size: 18px; 
+    line-height: 1.7; 
+    margin: 0;
+    padding: 0;
+}
+.tituloPrincipal{
+    background-color: cadetblue;
+    padding: 20px 0;
+    margin-top: 0px;
+    color: white;
+    text-align: center;
+    font-size: 28px;
+}
+
+section{
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 8px;
+
+}
+
+h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 26px;
+    color: #2980b9; 
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.introducao{
+    text-align: center;
+    background-color: #34495e;
+    color: white;
+    padding: 40px; 
+    margin-bottom: 0px;
+}
+
+ul, ol {
+    margin-left: 10px;
+    padding-left: 30px;
+}
+
+li {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+li br {
+    display: block;
+    margin-bottom: 10px;
+}
+
