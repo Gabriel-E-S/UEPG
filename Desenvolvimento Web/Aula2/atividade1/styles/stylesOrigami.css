@@ -50,8 +50,8 @@ h2{
     align-items: center;
     justify-content: center;
     gap: 15px;
-    background-color: #639a9b; /* Use a cor exata que você está usando */
-    padding: 20px; /* Espaço interno para a faixa não ficar colada no texto */
+    background-color: #639a9b; 
+    padding: 20px 0;
 }
 
 .cabecalho p{
@@ -126,3 +126,17 @@ li br {
     text-align: center;
 }
 
+.curiosidades{
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: rgb(70, 115, 117);
+    padding: 10px;
+}
+
+.curiosidades a{
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(216, 213, 213);
+    font-weight: bold;
+    margin: 0 15px;
+}

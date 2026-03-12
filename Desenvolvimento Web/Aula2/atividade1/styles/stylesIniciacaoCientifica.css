@@ -13,11 +13,12 @@ body{
 }
 .tituloPrincipal{
     background-color: cadetblue;
-    padding: 20px 0;
+    padding: 40px 0;
     margin-top: 0px;
     color: white;
     text-align: center;
     font-size: 28px;
+    margin-bottom: 0;
 }
 
 section{
@@ -70,6 +71,7 @@ li br {
     margin-bottom: 10px;
 }
 
+
 .pGrafo{
     font-size: 24px;
     color: #2980b9;
@@ -81,4 +83,19 @@ li br {
     width: 600px;
     height: auto;
     
+}
+
+.curiosidades{
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: rgb(70, 115, 117);
+    padding: 10px;
+}
+
+.curiosidades a{
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(216, 213, 213);
+    font-weight: bold;
+    margin: 0 15px;
 }
