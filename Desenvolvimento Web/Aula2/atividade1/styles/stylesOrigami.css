@@ -12,7 +12,6 @@ body{
     padding: 0;
 }
 .tituloPrincipal{
-    background-color: cadetblue;
     padding: 20px 0;
     margin-top: 0px;
     color: white;
@@ -29,6 +28,14 @@ section{
 
 }
 
+h1{
+    text-align: center;
+    font-family: monospace;
+    font-size: 35px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
 h2{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 26px;
@@ -36,6 +43,31 @@ h2{
     margin-top: 0;
     margin-bottom: 25px;
     border-bottom: 2px solid #ecf0f1;
+}
+
+.divCabecalho{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background-color: #639a9b; /* Use a cor exata que você está usando */
+    padding: 20px; /* Espaço interno para a faixa não ficar colada no texto */
+}
+
+.cabecalho p{
+    text-align: center;
+    font-family:monospace;
+    font-size: 25px;
+}
+
+.tituloPrincipal{
+    margin: 0;
+}
+
+.imgOrigami{
+    height: 100px;
+    width: auto;
+
 }
 
 .introducao{
@@ -59,5 +91,38 @@ li {
 li br {
     display: block;
     margin-bottom: 10px;
+}
+
+.imgMuralhaDaChina{
+    height: 500px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.minhasCriacoes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 30px;
+}
+
+.minhasCriacoes img{
+    height: auto;
+    width: 250px;
+    border-radius: 75px;
+}
+
+#imgOrigami1{
+    width: 800px;
+    height: auto;
+    border-radius: 50px;
+}
+
+.paragrafoFinal{
+    margin-bottom: 30px;
+    font-size: 20px;
+    text-align: center;
 }
 
