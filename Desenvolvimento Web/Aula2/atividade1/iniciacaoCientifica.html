@@ -10,8 +10,13 @@
 </head>
 <body>
 
-    <h1 class="tituloPrincipal">Polarização de macrófagos em contextos de PAMPS(Padrões Moleculares Associados a patógenos)
-    </h1>
+    <h1 class="tituloPrincipal">Polarização de macrófagos em contextos de PAMPS(Padrões Moleculares Associados a patógenos)</h1>
+
+    <div class="curiosidades">
+        <a href="./index.html">HOME</a>
+        <a href="./origami.html">Origamis</a>
+    </div>
+
 
     <section class="introducao">
         <h2>Introdução ao projeto</h2>
@@ -45,7 +50,7 @@
 
         <ol>
 
-            <li> Revisão de literatura  <br>
+            <li> <h3>Revisão de literatura</h3>
 
                     Foi realizada uma busca de artigos e referências nas bases de referências científicas 
                     Scopus, Google Scholar, PubMed e no portal de períodicos da CAPES, utilizando as 
@@ -54,16 +59,17 @@
             </li>
             
             <li>
-                Construção da rede base e algoritmo de análise <br>
-                    A partir da revisão de literatura, foi construída uma rede base de sinalização, de forma 
+                <h3>Construção da rede base e algoritmo de análise</h3>
+
+                    <p>A partir da revisão de literatura, foi construída uma rede base de sinalização, de forma 
                     mais específica um multigrafo, onde os vértices representam células e as arestas as 
                     substâncias sinalizadoras entre elas. Para concretizar e efetuar as operações, foi criado 
                     um algoritmo de programação em linguagem R que lê os dados de entrada e com base 
                     neles cria um multigrafo, verificando se este é fortemente conectado, definição que indica 
                     que todos os vértices possuem pelo menos uma entrada e uma saída, inserindo um vértice 
                     chamado de “Environment” e duas arestas de “input” e “output” a fim de garantir essa 
-                    característica. 
-                    Primeiramente, constrói-se a matriz de adjacência do grafo, a qual é posteriormente 
+                    característica.</p>  
+                    <p>Primeiramente, constrói-se a matriz de adjacência do grafo, a qual é posteriormente 
                     convertida em matriz de transição. Essa matriz descreve as probabilidades de um 
                     caminhante aleatório deslocar-se entre os vértices ao longo de um percurso. Em seguida, 
                     calculam-se autovalores e autovetores a partir da transposta dessa matriz, procedimento 
@@ -75,24 +81,24 @@
                     arestas, retirando a cada interação todas aquelas com o mesmo nome, por fim gerando 
                     duas tabelas de resultados ao final da análise. O RME indica a importância de um 
                     componente da rede de sinalização. Com valores variando de 0 a 1, valores mais 
-                    próximos da unidade indicam maior relevância em seu contexto. 
+                    próximos da unidade indicam maior relevância em seu contexto. </p>
             </li>
-            <li> Análise estatística <br>
-                Em outro “script” de programação, são efetuadas a leitura e análise estatística dos dados 
+            <li> <h3>Análise estatística</h3>
+                <p>Em outro “script” de programação, são efetuadas a leitura e análise estatística dos dados 
                 obtidos na etapa anterior. A fim de testar todos os dados obtidos, foram criados 3 grupos 
                 de testes: CellsKO, SignalKO e allKO, representando  os dados dos nocautes de células, 
-                sinais e o último o comjunto de ambos. 
-                São executados os testes de normalidade e uniformidade de Kolmogorov-Smirnov, 
+                sinais e o último o comjunto de ambos. </p>
+                <p>São executados os testes de normalidade e uniformidade de Kolmogorov-Smirnov, 
                 Anderson-Darling, Shapiro-Wilk e Lillie-fors para verificar se os conjuntos criados são 
                 uniformes ou não, seguidos da análise dos componentes “outiliers”, que são aqueles que 
                 se destacaram mais possuindo índice RME maior, utilizando o método dos quartis e o de 
-                Tukey, utilizando a fórmula  Q3+1.5×IQR . 
+                Tukey, utilizando a fórmula  Q3+1.5×IQR . </p>
             </li>
-            <li> Interpretação dos resultados obtidos  <br>
-                A partir dos componentes de maior destaque, realizou-se uma nova revisão de literatura 
+            <li><h3> Interpretação dos resultados obtidos </h3>
+                <p>A partir dos componentes de maior destaque, realizou-se uma nova revisão de literatura 
                 nas mesmas bases de referência, utilizando a chave de busca “nome da substância AND 
                 PAMPS”. O propósito dessa etapa foi avaliar se as evidências disponíveis na literatura 
-                científica corroboram ou refutam os resultados obtidos.
+                científica corroboram ou refutam os resultados obtidos.</p>
             </li>
         </ol>
     </section>
@@ -107,13 +113,15 @@
     <section>
         <h2>Conclusão</h2>
 
-        Em resumo, nosso estudo propõe uma nova rede computacional baseada em 
+        <p>Em resumo, nosso estudo propõe uma nova rede computacional baseada em 
         multigrafos que avalia quantitativamente a polarização de macrófagos por meio da 
         realização de nocautes teóricos retirando vértices e arestas, o modelo destacou a 
         importância de componentes imunológicos específicos, em destaque -- IL-10, M1, M2, 
         17 
         IFN-gamma, Th1 e Th2 – na manutenção do equilíbrio entre estados pró-inflamatórios e 
-        anti-inflamatórios. A análise estatística do Erro Médio Relativo (RME) evidencia de forma 
+        anti-inflamatórios. </p>
+        
+        <p>A análise estatística do Erro Médio Relativo (RME) evidencia de forma 
         ainda mais clara o impacto heterogêneo desses “knockouts”, indicando que a polarização 
         dos macrófagos é regulada por uma rede estruturada de sinais celulares, e não por 
         interações aleatórias. Esses achados aprofundam a compreensão dos mecanismos de 
@@ -124,6 +132,7 @@
         Além disso, outro caminho de estudo pode vir a estudar outros fenômenos específicos 
         como o adenocarcinoma e explorar a construção de redes separadas para cada tipo de 
         PAMP. 
+        </p>
     </section>
 
 
