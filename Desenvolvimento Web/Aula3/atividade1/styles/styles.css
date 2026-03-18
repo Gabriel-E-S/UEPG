@@ -1,0 +1,52 @@
+header{
+    background-color: rgb(255, 183, 0);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+body{
+    background-color: aliceblue;
+}
+
+section{
+    background-color: rgb(230, 255, 149);
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.titulo1{
+    font-size: 40px;
+}
+
+img{
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.textoIntroducao{
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cardapio{
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    grid-template-rows: auto;
+    gap: 10px;
+}
+
+.cardapio div{
+    background-color: rgba(229, 206, 149, 0.8);
+    border-radius: 20px;
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
