@@ -6,8 +6,5 @@ header{
     align-content: center;
     flex-wrap: wrap;
     order: 1;
-}
-
-.titulo1{
-    flex-direction: column;
+    align-items: center;
 }
