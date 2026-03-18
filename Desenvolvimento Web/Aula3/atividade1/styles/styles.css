@@ -10,6 +10,7 @@ header{
 
 body{
     background-color: aliceblue;
+    margin: 0;
 }
 
 section{
@@ -46,7 +47,26 @@ img{
 
 .cardapio div{
     background-color: rgba(229, 206, 149, 0.8);
+    display: flex;
+    flex-direction: column;
     border-radius: 20px;
     padding: 10px;
     font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    text-align: left;
+}
+
+.tituloCardapio{
+    text-align: center;
+}
+
+.cardapio img{
+    align-self: center;
+}
+
+button{
+    background-color: seashell;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 40px;
 }
