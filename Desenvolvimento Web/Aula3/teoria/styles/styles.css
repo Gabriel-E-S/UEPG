@@ -1,0 +1,13 @@
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    order: 1;
+}
+
+.titulo1{
+    flex-direction: column;
+}
