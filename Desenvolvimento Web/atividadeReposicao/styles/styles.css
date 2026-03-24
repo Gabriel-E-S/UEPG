@@ -1,0 +1,63 @@
+body{
+    margin: 0px;
+}
+
+header{
+    text-align: center;
+}
+
+#tituloPrincipal{
+    background-color: #25a1ff;
+    margin: 40px 40px 0 40px;
+    padding: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 50px;
+}
+
+.menu{
+    margin: 0px 40px 0 40px;
+    padding: 10px;
+    background-color: #a5d8ff;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+h2{
+    text-align:left;
+    color: #004f8b;
+    margin-left: 40px;
+    font-size: 28px;
+}
+.textoIntrodutorio{
+    padding: 10px 40px;
+    margin: 30px 40px;
+    font-size: 18px;
+    text-align: center;
+    background-color: yellow;
+    border-radius: 40px;
+}
+
+
+.programacao{
+    background-color: #cde6fa;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    margin: 0px 40px;
+    border-radius: 40px;
+    display: flex;
+}
+
+.palestrantes{
+    background-color: #cde6fa;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    margin: 30px 40px;
+    border-radius: 40px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    gap: 20px;
+}
+
