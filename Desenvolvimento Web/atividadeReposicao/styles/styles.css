@@ -61,3 +61,19 @@ h2{
     gap: 20px;
 }
 
+.containerPalestrantes{   
+    background-color: #a5d8ff;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.containerPalestrantes img{
+    width: 200px;
+    height: 200px;
+    border-radius: 10%;
+}
