@@ -1,0 +1,192 @@
+body {
+    margin: 0;
+    background-color: #f8f8f8;
+    color: #4A4A4A;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Georgia', serif;
+}
+
+header {
+    padding: 20px;
+    font-size: 30px;
+    position: relative;
+    text-align: center;
+    background-color: #808B72;
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    font-style: italic;
+    animation: descerTopo 1s ease-out forwards;
+}
+
+.containerBotao{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.containerBotao button{
+    padding: 30px 20px;
+    background-color: #ffffff;
+    color: #808B72;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: piscar 1s infinite
+}
+
+.containerBotao button:hover {
+    background-color: #43483b;
+    color: #ffffff;
+    transform: translateY(-3px);
+    animation:none
+}
+
+.menu {
+    margin: 0;
+    align-self: center;
+    gap: 40px;
+    width: 50%;
+}
+
+header a {
+    text-decoration: none;
+    color: #808B72;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.3s ease; 
+}
+
+header a:hover {
+    background-color: #43483b;
+    color: #ffffff;
+    transform: translateY(-3px); 
+}
+
+h2 {
+    font-size: 30px;
+}
+
+.slogan {
+    font-size: 25px;
+    margin-top: 20px;
+    font-style: italic;
+    animation: aparecerSurgir 2s ease-out forwards;
+}
+
+.imagens {
+    margin-top: 10px;
+    width: 82%;
+    height: auto;
+    border-radius: 20px;
+    animation: roverAbove 3s ease-in-out ;
+}
+
+#imgPadaria {
+    width: 80%;
+    height: auto;
+    border: 5px solid #aebc9c;
+    border-radius: 10px;
+}
+
+.containerIngredientes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.divIngredientes {
+    width: 330px;
+}
+
+.imagensIngredientes {
+    margin: auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.imagensIngredientes:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+section {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #bfc6b6;
+    border-radius: 10px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    animation: subirSecao 1.5s ease-out;
+    transition: all 0.3s ease;
+}
+
+.redesSociais {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.redesSociais img {
+    width: 40px;
+    height: 40px;
+}
+
+section:hover {
+    background-color: #d7dfce;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#contato {
+    animation: transicaoCores 10s linear infinite;
+}
+
+@keyframes roverAbove {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes aparecerSurgir {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes subirSecao {
+    0% { transform: translateY(40px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes descerTopo {
+    0% { transform: translateY(-100%); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes transicaoCores {
+  0%   {background-color:rgba(0, 97, 60, 0.775); }
+  25%  {background-color:rgba(0, 255, 179, 0.362); }
+  50%  {background-color:rgba(41, 188, 61, 0.879); }
+  75%  {background-color:green;}
+  100% {background-color:rgb(186, 255, 188); }
+}
+
+@keyframes piscar {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
