@@ -34,7 +34,11 @@ function iniciarContagem() {
                 elementoTempo.classList.remove("alerta-tempo"); 
                 
                 console.log("Tempo esgotado!");
-                alert("Tempo esgotado! Tire um tempo para você descansar");
+                
+                setTimeout(() => {
+                    alert("Tempo esgotado! Tire um tempo para você descansar");
+                }, 10);
+
                 estado = "parado";
                 return;         
             }
