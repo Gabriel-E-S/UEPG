@@ -1,6 +1,5 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f9f9f9;
     text-align: center;
     margin: 0;
     background-color: rgb(128, 230, 248);
@@ -10,16 +9,22 @@ body{
 header{
     font-size: 30px;
     margin: 20px auto;
-    width: 600px;
+    width: 800px;
     background-color: rgb(248, 248, 248);
     padding: 40px;
-    border-radius: 20px;
+    border-radius: 20px;  
+    animation: animacaoCabecalho 3s forwards;  
 }
+
+header, .botoes, .status, .containerTempo {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 .botoes {
     display: flex;
     justify-content: center;
     align-items: center; 
-    gap: 20px;
+    gap: 30px;
     width: 600px;
     background-color: rgb(254, 254, 254);
     margin: 20px auto;
@@ -29,22 +34,36 @@ header{
 
 .botaoIniciar {
     background-color: rgb(104, 104, 192);
+    font-size: 20px;
     width: 250px;  
     height: 250px; 
     border-radius: 50%; 
     color: white;
     border: none; 
     cursor: pointer;
+    text-transform: uppercase;
+}
+
+.botaoIniciar:hover {
+    background-color: rgb(80, 80, 160);
+    transform: translateY(-5px);
 }
 
 .botaoParar {
     background-color: rgb(255, 65, 65);
+    font-size: 20px;
     width: 250px; 
     height: 250px;
     border-radius: 0%;
     color: white;
     border: none;
     cursor: pointer;
+    text-transform: uppercase;
+}
+
+.botaoParar:hover {
+    background-color: rgb(200, 50, 50);
+    transform: translateY(-5px);
 }
 
 .status {
@@ -59,4 +78,32 @@ header{
     margin: 20px auto;
     padding: 10px 0;
     font-size: 24px;
+}
+
+#tempoRestante {
+    font-size: 36px;
+    font-weight: bold;
+    color: rgb(104, 104, 192);
+}
+
+#tempoRestante.alerta-tempo {
+    color: rgb(255, 65, 65);
+    animation: pulsar 1s infinite;
+}
+
+@keyframes animacaoCabecalho {
+    0%{
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulsar {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
 }
