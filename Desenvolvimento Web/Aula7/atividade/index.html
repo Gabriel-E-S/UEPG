@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer Pomodoro</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    
+</head>
+<body>
+    <header>Temporizador Pomodoro</header>
+
+    <div class="botoes">
+        <button class="botaoIniciar" onclick="iniciarContagem()">Iniciar</button>
+    
+        <button class="botaoParar" onclick="pararContagem()">Parar/Resetar</button>
+    </div>
+
+    <h2 class="status">Status: <span id="status">Parado</span></h2>
+
+    <div class="containerTempo">
+        <h2>Tempo restante:</h2>
+    
+        <p id="tempoRestante">0:00</p>
+    </div>
+
+    <script src="./scripts/scripts.js"></script>
+</body>
+</html>

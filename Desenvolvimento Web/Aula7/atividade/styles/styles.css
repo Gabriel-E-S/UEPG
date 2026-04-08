@@ -1,0 +1,62 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f9f9f9;
+    text-align: center;
+    margin: 0;
+    background-color: rgb(128, 230, 248);
+    
+}
+
+header{
+    font-size: 30px;
+    margin: 20px auto;
+    width: 600px;
+    background-color: rgb(248, 248, 248);
+    padding: 40px;
+    border-radius: 20px;
+}
+.botoes {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 20px;
+    width: 600px;
+    background-color: rgb(254, 254, 254);
+    margin: 20px auto;
+    padding: 20px 0;
+    border-radius: 20px;
+}
+
+.botaoIniciar {
+    background-color: rgb(104, 104, 192);
+    width: 250px;  
+    height: 250px; 
+    border-radius: 50%; 
+    color: white;
+    border: none; 
+    cursor: pointer;
+}
+
+.botaoParar {
+    background-color: rgb(255, 65, 65);
+    width: 250px; 
+    height: 250px;
+    border-radius: 0%;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.status {
+    margin: 20px auto;
+    width: 600px;
+    background-color: rgb(254, 254, 254);
+}
+
+.containerTempo{
+    background-color: rgb(254, 254, 254);
+    width: 600px;
+    margin: 20px auto;
+    padding: 10px 0;
+    font-size: 24px;
+}
