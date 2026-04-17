@@ -22,7 +22,20 @@ function addLivro(){
 
     contadorDeLivros++;
 
-    cartao.textContent = tituloLivro;
+    const textoDoLivro = document.createElement('span');
+
+    textoDoLivro.textContent = tituloLivro;
+
+    const botaoExcluir = document.createElement('span');
+    botaoExcluir.textContent = '✖'; 
+    botaoExcluir.classList.add('botaoExcluir');
+
+    botaoExcluir.addEventListener('click', function() {
+        cartao.remove();
+    });
+
+    cartao.appendChild(textoDoLivro);
+    cartao.appendChild(botaoExcluir);
 
     cartao.addEventListener('dragstart',function(e){
 
@@ -42,6 +55,8 @@ function addLivro(){
 
 const colunas = document.querySelectorAll('.coluna');
 
+console.log(colunas);
+
 colunas.forEach(coluna =>{
     coluna.addEventListener('dragover',function(e){
         e.preventDefault();
@@ -59,8 +74,18 @@ colunas.forEach(coluna =>{
         const idElementoArrastado = e.dataTransfer.getData('text/plain');
         const cartaoArrastado = document.getElementById(idElementoArrastado);
 
+        cartaoArrastado.classList.remove('corLendo','corLido');
+
         if(cartaoArrastado){
             coluna.appendChild(cartaoArrastado);
+            if(coluna.id === 'lendo'){
+                cartaoArrastado.classList.add('corLendo');
+            }
+            if(coluna.id === 'lido'){
+                cartaoArrastado.classList.add('corLido');
+            }
+
+
         }
     });
 
