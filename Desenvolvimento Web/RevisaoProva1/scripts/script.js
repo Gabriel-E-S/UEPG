@@ -35,11 +35,16 @@ function limparDisplay(){
     primeiroTermo = '';
     segundoTermo = '';
     expressao = '';
+    operacao = '';
     input.value = '';
     estado = "primeiroTermo";
 }
 
 function calcular(){    
+
+    if(segundoTermo === ''){
+        return;
+    }
 
     try{
 
@@ -58,7 +63,7 @@ function calcular(){
         }
         
         console.log('resultado = ' + resultado);
-        primeiroTermo = resultado;
+        primeiroTermo = resultado.toString();
         segundoTermo = '';
         operacao = '';
         estado = "primeiroTermo";
