@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+
+    <div class="calculadora">
+        <input type="text" readonly id="inputVisor">
+
+        <div class="containerBotao">    
+            <button class="botao" id="botaoC" onclick="limparDisplay()">C</button>
+
+            <button class="botao" onclick="colocarNoDisplay('7')">7</button>
+            <button class="botao" onclick="colocarNoDisplay('8')">8</button>
+            <button class="botao" onclick="colocarNoDisplay('9')">9</button>
+            <button class="botao" onclick="colocarNoDisplay('/')">/</button>
+
+            <button class="botao" onclick="colocarNoDisplay('4')">4</button>
+            <button class="botao" onclick="colocarNoDisplay('5')">5</button>
+            <button class="botao" onclick="colocarNoDisplay('6')">6</button>
+            <button class="botao" onclick="colocarNoDisplay('*')">*</button>
+
+            <button class="botao" onclick="colocarNoDisplay('1')">1</button>
+            <button class="botao" onclick="colocarNoDisplay('2')">2</button>
+            <button class="botao" onclick="colocarNoDisplay('3')">3</button>
+            <button class="botao" onclick="colocarNoDisplay('+')">+</button>
+
+            <button class="botao" onclick="colocarNoDisplay('.')">.</button>
+            <button class="botao" onclick="colocarNoDisplay('0')">0</button>
+            <button class="botao" onclick="calcular()">=</button>
+            <button class="botao" onclick="colocarNoDisplay('-')">-</button>
+    </div>
+
+    </div>
+    
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
