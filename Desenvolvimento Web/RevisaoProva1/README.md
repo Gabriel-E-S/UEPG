@@ -4,6 +4,33 @@ Este é um guia completo de revisão focado nos fundamentos do Desenvolvimento W
 
 ---
 
+## Sumário Interativo
+
+
+<summary>Clique para expandir o sumário</summary>
+
+- [1. HTML (HyperText Markup Language)](#1-html-hypertext-markup-language)
+  - [Estrutura Semântica](#estrutura-semântica)
+  - [Formulários](#formulários)
+  - [Outras tags importantes em formulários](#outras-tags-importantes-em-formulários)
+  - [Atributos essenciais para inputs](#atributos-essenciais-para-inputs)
+- [2. CSS (Cascading Style Sheets)](#2-css-cascading-style-sheets)
+  - [Box Model e Display](#box-model-e-display)
+  - [Posicionamento (position)](#posicionamento-position)
+  - [Layouts: Flexbox e Grid](#layouts-flexbox-e-grid)
+  - [Posicionamento Relativo vs Absoluto](#posicionamento-relativo-vs-absoluto)
+  - [Animações em CSS](#animações-em-css)
+- [3. JavaScript (Fundamentos e Eventos)](#3-javascript-fundamentos-e-eventos)
+  - [Variáveis e Funções](#variáveis-e-funções)
+  - [Temporizadores](#temporizadores)
+- [4. Manipulação do DOM (Document Object Model)](#4-manipulação-do-dom-document-object-model)
+  - [Seleção e Alteração](#seleção-e-alteração)
+- [5. Básico de PHP (Backend Simples)](#5-básico-de-php-backend-simples)
+
+
+
+---
+
 ## 1. HTML (HyperText Markup Language)
 O HTML é uma linguagem de marcação (e não de programação) utilizada para estruturar páginas da web. Ele é composto por tags que definem o tipo de conteúdo exibido.
 
