@@ -299,7 +299,7 @@ Abaixo, um exemplo de um efeito de **Pulse** (mudança de cor de fundo) e **Fade
     /* Usando a propriedade abreviada: name | duration | timing-function */
     animation: fade-in 2s ease-in-out; 
 }
-
+```
 ---
 
 ## 3. JavaScript (Fundamentos e Eventos)
