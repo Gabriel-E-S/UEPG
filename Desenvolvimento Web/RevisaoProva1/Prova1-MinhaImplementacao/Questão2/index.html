@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de tarefas</title>
+
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Gerenciador de tarefas</h1>
+    </header>
+
+
+    <div class="containerEntradaDeDados">
+
+        <label for="entradaDeDados" id="label">Digite sua tarefa</label>
+
+        <div id="interface">
+            <input type="text" name="entradaDeDados" id="entradaDeDados">
+
+            <button onclick="criarTarefa()" id="botaoAdicionar">Adicionar</button>
+        </div>
+    </div>
+
+
+    <div class="quadroTarefas">
+        <h2>Tarefas:</h2>
+
+        <ul id="listaTarefas">
+
+        </ul>
+    </div>
+
+
+    <script src="./scripts/script.js"></script>
+</body>
+</html>

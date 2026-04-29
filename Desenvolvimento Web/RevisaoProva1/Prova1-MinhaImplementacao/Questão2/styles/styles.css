@@ -1,0 +1,84 @@
+body{
+    background-color: rgb(252, 252, 252);
+    text-align: center;
+    margin: 0px;
+    font-size: 18px;
+}
+
+h1{
+    font-size: 40px;
+    color: white;
+}
+
+h2{
+    font-size: 30px;
+}
+
+#botaoAdicionar{
+    border: none;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: blue;
+    color: white;
+    font-size: 15px;
+}
+
+#label{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 20px;
+}
+
+#entradaDeDados{
+    border: none;
+    padding: 10px;
+    width: 50%;
+    font-size: 1rem;
+    border-radius: 20px;
+}
+
+#interface{
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.quadroTarefas{
+    background-color: rgb(33, 85, 230);
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+
+.tarefa{
+    margin: 10px 0px;
+    background-color: rgb(100, 133, 224);
+    border-radius: 20px;
+}
+
+header{
+    margin: 0 auto 30px auto;
+    padding: 10px;
+    border-radius: 30px;
+    width: 1200px;
+    background-color: rgb(33, 85, 230);
+}
+
+.containerEntradaDeDados{
+    width: 1200px;
+    margin: 0 auto 30px auto;
+    background-color: rgb(190, 207, 253);
+    padding: 10px;
+    
+}
+
+.feito{
+    background-color: rgb(2, 90, 14);
+}
+
+
