@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="styles/styles.css  ">
+</head>
+<body>
+    <header>
+        <h1>Comentarios rede Social com fetch API</h1>
+    </header>
+
+    <div class="inputContainer">
+        <label for="inputId">Digite o ID do post</label>
+        <input type="number" name="inputId" required id="inputId" min="0">
+    </div>
+
+    <button id="btnCarregarComentarios">Carregar Comentários</button>
+
+    <main>
+        <section class="comentarios">
+            <h2>Comentários</h2>
+            <div id="containerComentarios">
+                <ul id="listaComentarios">
+
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
