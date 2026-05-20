@@ -65,3 +65,13 @@ Conecte o ESP8266 ao computador, selecione o modelo correto (ex: NodeMCU 1.0 (ES
 6. Abra o index.html utilizando a extensão liveServer ou clicando no arquivo no gerenciador de arquivos.
 
 6. Digite sua mensagem e veja o processo acontecendo.
+
+## Imagens do projeto
+
+### Foto página web
+
+![página web](./imagensREADME.md/paginaWeb.png)
+
+### Foto da aplicação funcionando
+
+![foto esp](./imagensREADME.md/fotoEsp.jpg)
