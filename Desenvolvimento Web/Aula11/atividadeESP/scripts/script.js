@@ -1,7 +1,8 @@
 const button = document.getElementById("enviarPalavra");
 const input = document.getElementById("entradaPalavra");
 
-const ipESP8266 = "http://10.206.255.119"; 
+// Substitua pelo endereço IP do seu ESP8266
+const ipESP8266 = "http://10.206.255.119";
 
 button.addEventListener('click', function() {
     const textValue = input.value;
