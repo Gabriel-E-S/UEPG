@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu catálogo</title>
+    <link rel="stylesheet" href="./styles.css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Meu catálogo de filmes</h1>
+    </header>
+
+    <section class="introducao">
+        <h2>Bem-vindo ao meu catálogo de filmes!</h2>
+
+        <p>Aqui você pode adicionar seus filmes favoritos e verificar a 
+           lista completa.
+           Use o formulário abaixo para adicionar um novo filme, incluindo seu nome, descrição, gênero e data
+           de lançamento. 
+           Depois de adicionar um filme, clique no botão "Verificar Filmes" para ver a lista atualizada dos seus
+           filmes favoritos.
+        </p>
+
+    </section>
+    <section class="introducao">
+        <h2>Pare de dizer eu acho que já vi esse filme</h2>
+        <p> Nosso catálogo é perfeito para ver
+           o o que você já assistiu. Registre suas maratonas, dê sua nota sincera e nunca mais perca o fio da
+           meada da sua vida cinéfila.
+        </p>
+    </section>
+    
+
+        
+    <div class="container-formulario">
+        <form action="http://localhost:3000/add-filme" method="POST">
+            <label for="nomeFilme">Nome:</label>
+            <input type="text" name="nome" id="nomeFilme" placeholder="Digite um novo filme" required>
+    
+            <label for="descricao">Descrição:</label>
+            <input type="text" name="descricao" id="descricao" placeholder="Digite a descrição do filme" required>
+    
+            <label for="genero">Gênero:</label>
+            <select name="genero" id="genero" required>
+                <option value="acao">Ação</option>
+                <option value="comedia">Comédia</option>
+                <option value="drama">Drama</option>
+                <option value="romance">Romance</option>
+                <option value="terror">Terror</option>
+            </select>
+    
+            <label for="lancamento">Data de lançamento:</label>
+            <input type="date" name="lancamento" id="lancamento" required>
+
+            
+    
+            <button type="submit" id="botaoAdicionar">Adicionar</button>
+        </form>
+    </div>
+
+    <a href="lista.html"><button type="button" id="botaoVerificar">Verificar Filmes</button></a>
+
+</body>
+</html>

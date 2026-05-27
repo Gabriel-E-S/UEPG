@@ -1,0 +1,14 @@
+CREATE DATABASE meu_banco;
+USE meu_banco;
+
+/*DROP TABLE tarefas;*/
+
+CREATE TABLE tarefas(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    prioridade char(5) NOT NULL,
+    prazo DATE NOT NULL
+);
+
+SELECT * FROM tarefas;

@@ -1,0 +1,3 @@
+CREATE USER 'nodeuser'@'%' IDENTIFIED BY 'node123';
+GRANT ALL PRIVILEGES ON *.* TO 'nodeuser'@'%';
+FLUSH PRIVILEGES;
