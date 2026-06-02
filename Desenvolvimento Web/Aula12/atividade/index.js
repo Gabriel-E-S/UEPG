@@ -109,9 +109,9 @@ app.delete('/filmes/:id', (req, res) => {
     db.query(sql, [idDaFilme], (err, result) => {
         if (err) {
             console.error(err);
-            return res.status(500).send('Erro ao deletar a filme no banco');
+            return res.status(500).send('Erro ao deletar o filme no banco');
         }
-        res.send('Filme deletada com sucesso!');
+        res.send('Filme deletado com sucesso!');
     });
 });
 
