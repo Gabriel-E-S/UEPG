@@ -5,7 +5,7 @@ const cors = require('cors');
 
 // Criar aplicação
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Permitir o CORS 
 app.use(cors()); 
@@ -14,12 +14,14 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 // Conexão com MySQL
+
 const db = mysql.createConnection({
-  host: '172.28.96.1', // Mantém o IP do Windows que descobrimos antes
-  user: 'nodeuser',    // O novo usuário que criamos
+  host: '172.23.96.1', // Mantém o IP do Windows ou 'localhost' se estiver rodando pelo cmd!
+  user: 'nodeuser',    // novo usuário do mysql
   password: 'node123', // A senha do novo usuário
-  database: 'meu_banco' // Confirme se o nome do banco está certinho
+  database: 'meu_banco' 
 });
+
 // Testar conexão
 db.connect((err) => {
     if (err) {
