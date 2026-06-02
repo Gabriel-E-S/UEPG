@@ -12,6 +12,7 @@ app.use(cors());
 
 // Permitir receber dados de formulário (HTML)
 app.use(express.urlencoded({ extended: true }));
+
 // Conexão com MySQL
 const db = mysql.createConnection({
   host: '172.28.96.1', // Mantém o IP do Windows que descobrimos antes
@@ -29,12 +30,12 @@ db.connect((err) => {
 });
 // Rota para salvar usuário (form HTML)
 app.post('/add-filme', (req, res) => {
-    const { nome, descricao, genero, lancamento } = req.body;
 
+    const { nome, descricao, genero, lancamento,nota } = req.body;
 
-    const sql = 'INSERT INTO filmes (nome, descricao, genero, lancamento) VALUES (?, ?, ?, ?)';
+    const sql = 'INSERT INTO filmes (nome, descricao, genero, lancamento, nota) VALUES (?, ?, ?, ?, ?)';
 
-    db.query(sql, [nome, descricao, genero, lancamento], (err, result) => {
+    db.query(sql, [nome, descricao, genero, lancamento, nota], (err, result) => {
         if (err) {
             console.error(err);
             return res.send('Erro ao salvar');

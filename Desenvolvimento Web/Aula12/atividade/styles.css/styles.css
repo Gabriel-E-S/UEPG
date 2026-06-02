@@ -1,21 +1,56 @@
+@keyframes deslizarParaBaixo {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-body{
+@keyframes surgirDeBaixo {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulsar {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+body {
     background-color: rgb(255, 249, 249);
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
     text-align: center;
 }
 
-header{
+header {
     background-color: rgb(29, 66, 55);
     color: white;   
     padding: 10px 20px;
     margin-bottom: 10px;
     width: 50%;
     margin: 20px auto;
+    
+    animation: deslizarParaBaixo 0.8s ease-out forwards;
 }
 
-.introducao{
+.introducao {
     background-color: rgb(7, 110, 78);
     width: 50%;
     margin: 20px auto;
@@ -23,9 +58,10 @@ header{
     border-radius: 10px;
     color: white;
     text-align: left;
+    
+    opacity: 0;
+    animation: surgirDeBaixo 0.8s ease-out 0.3s forwards;
 }
-
-
 
 .container-formulario {
     background-color: rgb(7, 110, 78);
@@ -34,6 +70,9 @@ header{
     padding: 20px;
     border-radius: 10px;
     color: white; 
+    
+    opacity: 0;
+    animation: surgirDeBaixo 0.8s ease-out 0.6s forwards;
 }
 
 form {
@@ -87,5 +126,9 @@ button {
 
 button:hover {
     background-color: #dddddd;
+    animation: pulsar 0.6s infinite ease-in-out;
 }
 
+#botaoAdicionar:hover, #botaoVerificar:hover {
+    background-color: #03c779;
+}

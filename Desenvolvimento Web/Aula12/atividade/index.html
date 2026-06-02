@@ -24,7 +24,7 @@
 
     </section>
     <section class="introducao">
-        <h2>Pare de dizer eu acho que já vi esse filme</h2>
+        <h2>Pare de dizer "Eu acho que já vi esse filme"</h2>
         <p> Nosso catálogo é perfeito para ver
            o o que você já assistiu. Registre suas maratonas, dê sua nota sincera e nunca mais perca o fio da
            meada da sua vida cinéfila.
@@ -53,8 +53,9 @@
             <label for="lancamento">Data de lançamento:</label>
             <input type="date" name="lancamento" id="lancamento" required>
 
-            
-    
+            <label for="nota">Nota (0-10):</label>
+            <input type="number" name="nota" id="nota" min="0" max="10" step="0.1" placeholder="Digite a nota do filme" required>
+
             <button type="submit" id="botaoAdicionar">Adicionar</button>
         </form>
     </div>
